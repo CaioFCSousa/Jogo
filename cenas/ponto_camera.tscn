@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://qy4yheo1kh3t"]
+
+[ext_resource type="Script" uid="uid://cbwhqxucxv31i" path="res://scripts/camera.gd" id="1_ie7ry"]
+[ext_resource type="Texture2D" uid="uid://dsi3i0285lt4l" path="res://sprites/icon.svg" id="2_jonhm"]
+
+[node name="ponto camera" type="Node2D" unique_id=920254326]
+script = ExtResource("1_ie7ry")
+exibir_alvo = true
+
+[node name="MakerAlvo1" type="Marker2D" parent="." unique_id=1715347565]
+modulate = Color(0.899763, 2.117753e-06, 0.49440694, 1)
+rotation = 0.3926991
+
+[node name="MakerAlvo2" type="Marker2D" parent="." unique_id=745284907]
+modulate = Color(4.7168137e-06, 0.63547844, 0.8103744, 1)
+rotation = 2.7488935
+
+[node name="PontoMedio" type="Marker2D" parent="." unique_id=1806738682]
+
+[node name="Camera2D" type="Camera2D" parent="PontoMedio" unique_id=1434624935]
+modulate = Color(2.887845e-06, 0.7430347, 0.91133726, 1)
+
+[node name="Icon" type="Sprite2D" parent="PontoMedio" unique_id=1108344778]
+texture = ExtResource("2_jonhm")
