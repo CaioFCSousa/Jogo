@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://du27fc4g0oifh"]
+
+[ext_resource type="Texture2D" uid="uid://dkdtoq0px22ld" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_4.png" id="1_44cfe"]
+[ext_resource type="Script" uid="uid://bmcjfem120ntp" path="res://character_body_2d.gd" id="1_dd465"]
+[ext_resource type="Texture2D" uid="uid://b6bib5c4n54ik" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_3.png" id="2_2dyae"]
+[ext_resource type="Texture2D" uid="uid://c8iphyjj6rqao" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_5.png" id="2_dd465"]
+[ext_resource type="Texture2D" uid="uid://cmg1exu6tpydl" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_4.png" id="3_2u5n8"]
+[ext_resource type="Texture2D" uid="uid://bfcrxmi4ahnl8" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_6.png" id="3_lhvu3"]
+[ext_resource type="Texture2D" uid="uid://b2i00cgh2oug7" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_7.png" id="4_4sjlk"]
+[ext_resource type="Texture2D" uid="uid://d1m7h1dn3d6ab" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_5.png" id="4_73nau"]
+[ext_resource type="Script" uid="uid://c2sl4ghx7n3if" path="res://camera_2d.gd" id="6_lhvu3"]
+[ext_resource type="Texture2D" uid="uid://dj3y0xvxnvqss" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/jump/herochar_jump_up_anim_strip_3.png" id="11_75u2t"]
+[ext_resource type="Texture2D" uid="uid://dr3gcp2prcwg7" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/jump/herochar_jump_up_anim_strip_4.png" id="12_7qa1u"]
+[ext_resource type="Texture2D" uid="uid://b1vvtvaxqeo5j" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/slide/herochar_jump_double_anim_strip_3.png" id="12_skrk8"]
+[ext_resource type="Texture2D" uid="uid://b4p8lsn3g38jj" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/jump/herochar_jump_up_anim_strip_5.png" id="13_8gu1l"]
+[ext_resource type="Texture2D" uid="uid://bvr6findpjj6w" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/slide/herochar_jump_double_anim_strip_4.png" id="13_ye16i"]
+[ext_resource type="Texture2D" uid="uid://cmqcuns7ijvei" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/slide/herochar_jump_double_anim_strip_5.png" id="14_75u2t"]
+[ext_resource type="Texture2D" uid="uid://xfqqo6t0shpl" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_6.png" id="14_jsgy1"]
+[ext_resource type="Texture2D" uid="uid://bi5xekm5vpqq7" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_7.png" id="15_el80s"]
+[ext_resource type="Texture2D" uid="uid://du75ffscacsnl" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_8.png" id="16_oxcm1"]
+[ext_resource type="Texture2D" uid="uid://cqtcjsi23jbe1" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_9.png" id="17_ltww1"]
+[ext_resource type="Texture2D" uid="uid://d3pm00x8fx6fi" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_10.png" id="18_a7mna"]
+[ext_resource type="Texture2D" uid="uid://dgp42epwaq3m1" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_11.png" id="19_lmwkj"]
+[ext_resource type="Texture2D" uid="uid://3qqsdg31q880" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_after_jump_dust_anim_strip_4.png" id="21_73nau"]
+[ext_resource type="Texture2D" uid="uid://da8qrwo3b163" path="res://platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_before_jump_dust_anim_strip_4.png" id="22_skrk8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp52p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2dyae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2u5n8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_73nau")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_44cfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dd465")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lhvu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4sjlk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_75u2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7qa1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8gu1l")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_skrk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ye16i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_75u2t")
+}],
+"loop": false,
+"name": &"slide",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_jsgy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_el80s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_oxcm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ltww1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_a7mna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_lmwkj")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u5n8"]
+size = Vector2(19, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye16i"]
+atlas = ExtResource("21_73nau")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75u2t"]
+atlas = ExtResource("21_73nau")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qa1u"]
+atlas = ExtResource("21_73nau")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gu1l"]
+atlas = ExtResource("21_73nau")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsgy1"]
+atlas = ExtResource("22_skrk8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el80s"]
+atlas = ExtResource("22_skrk8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxcm1"]
+atlas = ExtResource("22_skrk8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltww1"]
+atlas = ExtResource("22_skrk8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7mna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye16i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75u2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qa1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gu1l")
+}],
+"loop": false,
+"name": &"pouso",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsgy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el80s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxcm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltww1")
+}],
+"loop": false,
+"name": &"pulo",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=1949273261]
+script = ExtResource("1_dd465")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1858808838]
+position = Vector2(0, 1)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_qp52p")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1147829142]
+position = Vector2(-1.5, 2.5)
+shape = SubResource("RectangleShape2D_2u5n8")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1700681427]
+position = Vector2(-3, -30)
+process_callback = 0
+script = ExtResource("6_lhvu3")
+
+[node name="Fumaca" type="AnimatedSprite2D" parent="." unique_id=1934436108]
+position = Vector2(-7, 0)
+sprite_frames = SubResource("SpriteFrames_a7mna")
+animation = &"pulo"
+offset = Vector2(0, 6)
