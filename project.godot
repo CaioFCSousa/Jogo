@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Teste jogo legal"
-run/main_scene="res://Fases/Cena_Teste.tscn"
+run/main_scene="res://levels/levels/level_Teste.tscn"
 config/features=PackedStringArray("4.6", "Mobile")
 <<<<<<<HEADrun/main_scene="res://Cena_Teste.tscn"
 
