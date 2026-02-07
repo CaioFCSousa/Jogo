@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dkl5kqkk0aacp"]
+
+[ext_resource type="Script" uid="uid://cbeqnn3fk8d21" path="res://components/camera/camera_normal.gd" id="1_oop3w"]
+
+[node name="CameraNormal" type="Node2D" unique_id=1787818286]
+script = ExtResource("1_oop3w")
+mouse = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=832612283]
+visible = false
