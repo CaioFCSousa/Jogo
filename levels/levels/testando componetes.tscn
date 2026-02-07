@@ -1,0 +1,250 @@
+[gd_scene format=4 uid="uid://bwc8mi564105v"]
+
+[ext_resource type="Script" uid="uid://bmcjfem120ntp" path="res://entities/player/movimentacao_Player.gd" id="1_oamjw"]
+[ext_resource type="Texture2D" uid="uid://b6bib5c4n54ik" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_3.png" id="2_cfbyg"]
+[ext_resource type="Texture2D" uid="uid://cmg1exu6tpydl" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_4.png" id="3_dppel"]
+[ext_resource type="Texture2D" uid="uid://d1m7h1dn3d6ab" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_5.png" id="4_catd8"]
+[ext_resource type="Texture2D" uid="uid://dkdtoq0px22ld" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_4.png" id="5_1nbbo"]
+[ext_resource type="Texture2D" uid="uid://c8iphyjj6rqao" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_5.png" id="6_0s4bq"]
+[ext_resource type="Texture2D" uid="uid://bfcrxmi4ahnl8" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_6.png" id="7_rblxm"]
+[ext_resource type="Texture2D" uid="uid://b2i00cgh2oug7" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_7.png" id="8_p57lk"]
+[ext_resource type="Texture2D" uid="uid://dj3y0xvxnvqss" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/jump/herochar_jump_up_anim_strip_3.png" id="9_a8anp"]
+[ext_resource type="Texture2D" uid="uid://dr3gcp2prcwg7" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/jump/herochar_jump_up_anim_strip_4.png" id="10_6dyfv"]
+[ext_resource type="Texture2D" uid="uid://b4p8lsn3g38jj" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/jump/herochar_jump_up_anim_strip_5.png" id="11_sffym"]
+[ext_resource type="Texture2D" uid="uid://b1vvtvaxqeo5j" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/slide/herochar_jump_double_anim_strip_3.png" id="12_3m62n"]
+[ext_resource type="Texture2D" uid="uid://bvr6findpjj6w" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/slide/herochar_jump_double_anim_strip_4.png" id="13_dpp4m"]
+[ext_resource type="Texture2D" uid="uid://cmqcuns7ijvei" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/slide/herochar_jump_double_anim_strip_5.png" id="14_pdf3c"]
+[ext_resource type="Texture2D" uid="uid://xfqqo6t0shpl" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_6.png" id="15_sdrso"]
+[ext_resource type="Texture2D" uid="uid://bi5xekm5vpqq7" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_7.png" id="16_rjn7x"]
+[ext_resource type="Texture2D" uid="uid://du75ffscacsnl" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_8.png" id="17_tj8lh"]
+[ext_resource type="Texture2D" uid="uid://cqtcjsi23jbe1" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_9.png" id="18_dspf3"]
+[ext_resource type="Texture2D" uid="uid://d3pm00x8fx6fi" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_10.png" id="19_fw4lk"]
+[ext_resource type="Texture2D" uid="uid://dgp42epwaq3m1" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_11.png" id="20_pdlgq"]
+[ext_resource type="Texture2D" uid="uid://3qqsdg31q880" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_after_jump_dust_anim_strip_4.png" id="21_q4gb4"]
+[ext_resource type="Texture2D" uid="uid://da8qrwo3b163" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_before_jump_dust_anim_strip_4.png" id="22_7clb3"]
+[ext_resource type="Script" uid="uid://4dgxmyd2pfdu" path="res://components/comp_vida.gd" id="23_cfbyg"]
+[ext_resource type="Script" uid="uid://d1xaxosi0e3l3" path="res://components/comp_hurtbox.gd" id="23_dppel"]
+[ext_resource type="TileSet" uid="uid://ba722h2eb8sfa" path="res://world/tileset/bloco_defalut.tres" id="26_1nbbo"]
+[ext_resource type="Texture2D" uid="uid://dsi3i0285lt4l" path="res://assets/sprites/icon.svg" id="27_0s4bq"]
+[ext_resource type="PackedScene" uid="uid://dkl5kqkk0aacp" path="res://components/camera/camera_normal.tscn" id="28_p57lk"]
+[ext_resource type="Script" uid="uid://dx1tw4mmnv15a" path="res://components/comp_hitbox.gd" id="28_rblxm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp52p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cfbyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dppel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_catd8")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1nbbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0s4bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rblxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p57lk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_a8anp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6dyfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sffym")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3m62n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dpp4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_pdf3c")
+}],
+"loop": false,
+"name": &"slide",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_sdrso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rjn7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_tj8lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dspf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fw4lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_pdlgq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u5n8"]
+size = Vector2(16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye16i"]
+atlas = ExtResource("21_q4gb4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75u2t"]
+atlas = ExtResource("21_q4gb4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qa1u"]
+atlas = ExtResource("21_q4gb4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gu1l"]
+atlas = ExtResource("21_q4gb4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsgy1"]
+atlas = ExtResource("22_7clb3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el80s"]
+atlas = ExtResource("22_7clb3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxcm1"]
+atlas = ExtResource("22_7clb3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltww1"]
+atlas = ExtResource("22_7clb3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7mna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye16i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75u2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qa1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gu1l")
+}],
+"loop": false,
+"name": &"pouso",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsgy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el80s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxcm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltww1")
+}],
+"loop": false,
+"name": &"pulo",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_catd8"]
+radius = 8.0
+height = 22.0
+
+[node name="TestandoComponetes" type="Node2D" unique_id=1627596337]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1949273261]
+position = Vector2(13, -18)
+script = ExtResource("1_oamjw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1858808838]
+position = Vector2(0, 1)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_qp52p")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1147829142]
+position = Vector2(-1, 2.5)
+shape = SubResource("RectangleShape2D_2u5n8")
+
+[node name="Fumaca" type="AnimatedSprite2D" parent="Player" unique_id=1934436108]
+position = Vector2(-7, 0)
+sprite_frames = SubResource("SpriteFrames_a7mna")
+animation = &"pulo"
+offset = Vector2(0, 6)
+
+[node name="compVida" type="Node" parent="Player" unique_id=82776402]
+script = ExtResource("23_cfbyg")
+metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
+
+[node name="compHurtbox" type="Area2D" parent="Player" unique_id=1198371465 node_paths=PackedStringArray("comp_vida")]
+script = ExtResource("23_dppel")
+comp_vida = NodePath("../compVida")
+metadata/_custom_type_script = "uid://d1xaxosi0e3l3"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/compHurtbox" unique_id=959354253]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_catd8")
+debug_color = Color(0.21842927, 0.8342302, 0.2784787, 0.41960785)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1593613103]
+position = Vector2(19, -46)
+tile_map_data = PackedByteArray("AAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAP//AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAPz/AAAAAAAAAAAKAPv/AAAAAAAAAAAJAP//AAAAAAAAAAAIAP//AAAAAAAAAAAKAPr/AAAAAAAAAAALAPr/AAAAAAAAAAALAPv/AAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAALAP7/AAAAAAAAAAALAP//AAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAD4/wMAAAAAAAAAAAD3/wMAAAAAAAAAAAD2/wMAAAAAAAAAAAD1/wMAAAAAAAAAAADz/wIAAAAAAAAAAADz/wEAAAAAAAAAAADz/wAAAAAAAAAAAADz////AAAAAAAAAADz/wMAAAAAAAAAAAD0/wMAAAAAAAAAAADz//7/AAAAAAAAAADz//3/AAAAAAAAAADz//z/AAAAAAAAAADz//v/AAAAAAAAAADz//r/AAAAAAAAAADz//n/AAAAAAAAAADz//j/AAAAAAAAAADz//f/AAAAAAAAAADz//b/AAAAAAAAAADz//X/AAAAAAAAAAAKAPn/AAAAAAAAAAAKAPj/AAAAAAAAAAAKAPf/AAAAAAAAAAALAPj/AAAAAAAAAAALAPn/AAAAAAAAAAALAPf/AAAAAAAAAAD7/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD3/wQAAAAAAAAAAAD2/wQAAAAAAAAAAAD1/wQAAAAAAAAAAAD0/wQAAAAAAAAAAADz/wQAAAAAAAAAAADy/wMAAAAAAAAAAADy/wIAAAAAAAAAAADy/wEAAAAAAAAAAADy/wAAAAAAAAAAAADy////AAAAAAAAAADy//7/AAAAAAAAAADy//3/AAAAAAAAAADy//z/AAAAAAAAAADy//v/AAAAAAAAAADy//r/AAAAAAAAAADy//n/AAAAAAAAAADy//j/AAAAAAAAAADy//f/AAAAAAAAAADy//b/AAAAAAAAAADy//X/AAAAAAAAAAD2/wAAAAAAAAAAAAD3/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD0//7/AAAAAAAAAAD1//7/AAAAAAAAAAD2//z/AAAAAAAAAAD3//z/AAAAAAAAAAD4//z/AAAAAAAAAAD5//z/AAAAAAAAAAD6//z/AAAAAAAAAAD7//z/AAAAAAAAAAD3//v/AAAAAAAAAAD3//r/AAAAAAAAAAD3//n/AAAAAAAAAAD0//f/AAAAAAAAAAD1//f/AAAAAAAAAADy//T/AAAAAAAAAADy//P/AAAAAAAAAADy//L/AAAAAAAAAADz//L/AAAAAAAAAADz//P/AAAAAAAAAADz//T/AAAAAAAAAAD5//b/AAAAAAAAAAD6//b/AAAAAAAAAAD7//b/AAAAAAAAAAD8//b/AAAAAAAAAAD9//b/AAAAAAAAAAD+//b/AAAAAAAAAAD///b/AAAAAAAAAAAAAPb/AAAAAAAAAAABAPb/AAAAAAAAAAACAPb/AAAAAAAAAAADAPb/AAAAAAAAAAAEAPb/AAAAAAAAAAAFAPb/AAAAAAAAAAAGAPb/AAAAAAAAAAAHAPb/AAAAAAAAAAAKAPb/AAAAAAAAAAAKAPX/AAAAAAAAAAAKAPT/AAAAAAAAAAAKAPP/AAAAAAAAAAAKAPL/AAAAAAAAAAALAPL/AAAAAAAAAAALAPP/AAAAAAAAAAALAPT/AAAAAAAAAAALAPX/AAAAAAAAAAALAPb/AAAAAAAAAAA=")
+tile_set = ExtResource("26_1nbbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1889792221]
+position = Vector2(233, -15)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("27_0s4bq")
+
+[node name="comp_hitbox" type="Area2D" parent="Sprite2D" unique_id=1883546936]
+script = ExtResource("28_rblxm")
+metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/comp_hitbox" unique_id=1796840484]
+polygon = PackedVector2Array(-52, -61, -61, -52, -61, 54, -53, 62, 51, 62, 61, 53, 61, -52, 51, -62)
+
+[node name="CameraNormal" parent="." unique_id=1787818286 node_paths=PackedStringArray("alvo") instance=ExtResource("28_p57lk")]
+alvo = NodePath("../Player")
+offset = Vector2(0, -25.945)
+zoom_da_camera = Vector2(2, 2)
+scroll = 0.15000000000000568
