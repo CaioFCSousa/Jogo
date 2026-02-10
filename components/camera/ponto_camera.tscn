@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://i114qe3q10kg"]
 
-[ext_resource type="Script" uid="uid://cbwhqxucxv31i" path="res://components/camera/logica_ponto_camera.gd" id="1_ie7ry"]
 [ext_resource type="Texture2D" uid="uid://dsi3i0285lt4l" path="res://assets/sprites/icon.svg" id="2_jonhm"]
-[ext_resource type="Script" uid="uid://cebrjkhhe4odm" path="res://components/camera/ajuste_camera.gd" id="2_qax4e"]
+[ext_resource type="Script" uid="uid://cbwhqxucxv31i" path="res://components/camera/logica_ponto_camera.gd" id="2_qax4e"]
 
-[node name="ponto camera" type="Node2D" unique_id=920254326]
-script = ExtResource("1_ie7ry")
+[node name="ponto camera" type="Node2D" unique_id=920254326 node_paths=PackedStringArray("alvo1", "alvo2")]
+script = ExtResource("2_qax4e")
+alvo1 = NodePath("MakerAlvo1")
+alvo2 = NodePath("MakerAlvo2")
 
 [node name="MakerAlvo1" type="Marker2D" parent="." unique_id=1715347565]
 modulate = Color(0.899763, 2.117753e-06, 0.49440694, 1)
@@ -17,11 +18,8 @@ rotation = 2.7488935
 
 [node name="PontoMedio" type="Marker2D" parent="." unique_id=1806738682]
 
-[node name="Camera2D" type="Camera2D" parent="PontoMedio" unique_id=1434624935 node_paths=PackedStringArray("alvo1", "alvo2")]
+[node name="Camera2D" type="Camera2D" parent="PontoMedio" unique_id=1434624935]
 modulate = Color(2.887845e-06, 0.7430347, 0.91133726, 1)
-script = ExtResource("2_qax4e")
-alvo1 = NodePath("../../MakerAlvo1")
-alvo2 = NodePath("../../MakerAlvo2")
 
 [node name="Icon" type="Sprite2D" parent="PontoMedio" unique_id=1108344778]
 modulate = Color(1, 1, 1, 0.4627451)

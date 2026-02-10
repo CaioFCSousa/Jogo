@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://dxjm3klob1lqy"]
+
+[ext_resource type="Script" uid="uid://gobb8jtlx32r" path="res://resources/AbilityResource.gd" id="1_nq3b6"]
+[ext_resource type="Texture2D" uid="uid://dhbgftbtoy0jb" path="res://assets/Cards/pixelCardAssest_V01.png" id="1_vaf7s"]
+
+[resource]
+script = ExtResource("1_nq3b6")
+nome = "Levitar"
+atlas_principal = ExtResource("1_vaf7s")
+regiao_atlas = Rect2(0, 0, 100, 130)
+cor_interface = Color(0.56285006, 0.4152921, 0.96018237, 1)
+metadata/_custom_type_script = "uid://gobb8jtlx32r"

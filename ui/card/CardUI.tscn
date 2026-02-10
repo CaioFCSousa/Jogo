@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dud0f4hl8l6k0"]
+
+[ext_resource type="Script" uid="uid://d2d15iq8jsva" path="res://ui/card/CardUI.gd" id="1_evsj1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evsj1"]
+bg_color = Color(0, 0.09268746, 0.3877892, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.78431374)
+shadow_size = 8
+
+[node name="CardUi" type="Button" unique_id=1315262180]
+custom_minimum_size = Vector2(280, 380)
+anchors_preset = -1
+anchor_left = 0.047000002
+anchor_top = 0.074
+anchor_right = 0.047000002
+anchor_bottom = 0.074
+offset_left = -27.160004
+offset_top = -27.279999
+offset_right = 252.84001
+offset_bottom = 352.72003
+pivot_offset = Vector2(143.92, 186.36)
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_evsj1")
+script = ExtResource("1_evsj1")
+
+[node name="1" type="TextureRect" parent="." unique_id=1391252800]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="2" type="TextureRect" parent="." unique_id=1164269809]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.919998
+offset_top = 68.36
+offset_right = -26.080017
+offset_bottom = -177.64
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="3" type="TextureRect" parent="." unique_id=1126873470]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.83800006
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.08004761
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(137.92, 28)
+expand_mode = 1
+stretch_mode = 5

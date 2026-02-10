@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://dluivowikllg5"]
+
+[ext_resource type="Script" uid="uid://gobb8jtlx32r" path="res://resources/AbilityResource.gd" id="1_k6au1"]
+
+[resource]
+script = ExtResource("1_k6au1")
+nome = "Fogo"

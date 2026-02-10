@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bwc8mi564105v"]
+[gd_scene format=4 uid="uid://b7326ihw00iu4"]
 
 [ext_resource type="Script" uid="uid://bmcjfem120ntp" path="res://entities/player/movimentacao_Player.gd" id="1_oamjw"]
 [ext_resource type="Texture2D" uid="uid://b6bib5c4n54ik" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_3.png" id="2_cfbyg"]
@@ -22,12 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://dgp42epwaq3m1" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_11.png" id="20_pdlgq"]
 [ext_resource type="Texture2D" uid="uid://3qqsdg31q880" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_after_jump_dust_anim_strip_4.png" id="21_q4gb4"]
 [ext_resource type="Texture2D" uid="uid://da8qrwo3b163" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_before_jump_dust_anim_strip_4.png" id="22_7clb3"]
-[ext_resource type="Script" uid="uid://4dgxmyd2pfdu" path="res://components/comp_vida.gd" id="23_cfbyg"]
-[ext_resource type="Script" uid="uid://d1xaxosi0e3l3" path="res://components/comp_hurtbox.gd" id="23_dppel"]
+[ext_resource type="Script" path="res://components/comp_vida.gd" id="23_cfbyg"]
+[ext_resource type="Script" path="res://components/comp_hurtbox.gd" id="23_dppel"]
 [ext_resource type="TileSet" uid="uid://ba722h2eb8sfa" path="res://world/tileset/bloco_defalut.tres" id="26_1nbbo"]
 [ext_resource type="Texture2D" uid="uid://dsi3i0285lt4l" path="res://assets/sprites/icon.svg" id="27_0s4bq"]
-[ext_resource type="PackedScene" uid="uid://dkl5kqkk0aacp" path="res://components/camera/camera_normal.tscn" id="28_p57lk"]
-[ext_resource type="Script" uid="uid://dx1tw4mmnv15a" path="res://components/comp_hitbox.gd" id="28_rblxm"]
+[ext_resource type="PackedScene" path="res://components/camera/camera_normal.tscn" id="28_p57lk"]
+[ext_resource type="Script" path="res://components/comp_hitbox.gd" id="28_rblxm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qp52p"]
 animations = [{
@@ -214,15 +214,13 @@ offset = Vector2(0, 6)
 
 [node name="compVida" type="Node" parent="Player" unique_id=82776402]
 script = ExtResource("23_cfbyg")
-metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
 
 [node name="compHurtbox" type="Area2D" parent="Player" unique_id=1198371465 node_paths=PackedStringArray("comp_vida")]
 script = ExtResource("23_dppel")
 comp_vida = NodePath("../compVida")
-metadata/_custom_type_script = "uid://d1xaxosi0e3l3"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/compHurtbox" unique_id=959354253]
-position = Vector2(-1, 2)
+position = Vector2(-1, 3)
 shape = SubResource("CapsuleShape2D_catd8")
 debug_color = Color(0.21842927, 0.8342302, 0.2784787, 0.41960785)
 
@@ -238,7 +236,6 @@ texture = ExtResource("27_0s4bq")
 
 [node name="comp_hitbox" type="Area2D" parent="Sprite2D" unique_id=1883546936]
 script = ExtResource("28_rblxm")
-metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/comp_hitbox" unique_id=1796840484]
 polygon = PackedVector2Array(-52, -61, -61, -52, -61, 54, -53, 62, 51, 62, 61, 53, 61, -52, 51, -62)
