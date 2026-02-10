@@ -2,4 +2,4 @@
 .godot/
 /android/
 project.godot
-
+*.tmp
