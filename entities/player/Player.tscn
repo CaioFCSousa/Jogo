@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://dx1tw4mmnv15a" path="res://components/comp_hitbox.gd" id="25_unwxu"]
 [ext_resource type="Script" uid="uid://4dgxmyd2pfdu" path="res://components/vida/comp_vida.gd" id="26_2fpie"]
 [ext_resource type="PackedScene" uid="uid://ctr3pc6k5ig3o" path="res://components/ui/ui_vida_simples.tscn" id="27_i3i7k"]
-[ext_resource type="Script" uid="uid://dig2y6ekp8bx3" path="res://components/morte/morteRespnaw_SubComp.gd" id="28_m3vrt"]
+[ext_resource type="Script" uid="uid://dig2y6ekp8bx3" path="res://components/morte/MorteRespawn_SubComp.gd" id="28_m3vrt"]
 [ext_resource type="Script" uid="uid://cqi2b73imxyea" path="res://entities/player/imortalidade_temp_subComp.gd" id="29_unwxu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oj2y3"]
@@ -257,6 +257,7 @@ height = 21.0
 radius = 5.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1949273261]
+collision_layer = 2
 script = ExtResource("1_dd465")
 
 [node name="PanelContainer" parent="." unique_id=1355360307 node_paths=PackedStringArray("comp_vida") instance=ExtResource("27_i3i7k")]
@@ -321,7 +322,7 @@ vida_Maxima = 3.0
 regeneracao = true
 metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
 
-[node name="imortal_tempo" type="Timer" parent="vida_Comp" unique_id=818393532]
+[node name="invecibilidade_tempo" type="Timer" parent="vida_Comp" unique_id=818393532]
 one_shot = true
 
 [node name="morteRespawn_SubComp" type="Node" parent="vida_Comp" unique_id=725625582 node_paths=PackedStringArray("vida_comp", "tempo")]
@@ -332,7 +333,7 @@ tempo = NodePath("../respawn_tempo")
 [node name="imortalTemp_SubComp" type="Node" parent="vida_Comp" unique_id=1350577940 node_paths=PackedStringArray("vida_comp", "tempo_imortal")]
 script = ExtResource("29_unwxu")
 vida_comp = NodePath("..")
-tempo_imortal = NodePath("../imortal_tempo")
+tempo_imortal = NodePath("../invecibilidade_tempo")
 
 [node name="respawn_tempo" type="Timer" parent="vida_Comp" unique_id=1757415359]
 wait_time = 3.0

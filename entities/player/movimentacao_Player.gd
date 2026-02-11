@@ -3,6 +3,7 @@ extends CharacterBody2D
 # --- CONFIGURAÇÕES NO INSPETOR ---
 @export_enum("P1", "P2") var player_id: String = "P1"
 @export var cor_do_personagem: Color = Color.WHITE # Mude a cor da imagem aqui!
+@export var controles : controle
 
 const SPEED = 170.0
 const JUMP_VELOCITY = -400.0 
@@ -10,7 +11,7 @@ const SLIDE_SPEED = 400.0
 
 @onready var anim = $AnimatedSprite2D
 @onready var fumaca = $Fumaca 
-
+ 
 # Variáveis internas para os controles
 var acao_esquerda : String
 var acao_direita : String
@@ -25,6 +26,7 @@ func _ready() -> void:
 	# O modulate pinta o seu AnimatedSprite2D com a cor escolhida
 	anim.modulate = cor_do_personagem
 	# 2. DEFINIR TECLAS POR JOGADOR
+	"""
 	if player_id == "P1":
 		acao_esquerda = "p1_esquerda"
 		acao_direita = "p1_direita"
@@ -35,7 +37,12 @@ func _ready() -> void:
 		acao_direita = "p2_direita"
 		acao_pulo = "p2_pulo"
 		acao_slide = "p2_slide"
-
+	"""
+	acao_pulo = controles.cima.action
+	acao_slide = controles.baixo.action
+	acao_direita = controles.direita.action
+	acao_esquerda = controles.esquerda.action
+	
 	# 3. CONFIGURAR NODES AUXILIARES
 	if fumaca:
 		if not fumaca.animation_finished.is_connected(_on_fumaca_animation_finished):

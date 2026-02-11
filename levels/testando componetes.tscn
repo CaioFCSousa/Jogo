@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://du27fc4g0oifh" path="res://entities/player/Player.tscn" id="5_jiql5"]
 [ext_resource type="PackedScene" uid="uid://ctr3pc6k5ig3o" path="res://components/ui/ui_vida_simples.tscn" id="5_o4s0k"]
 [ext_resource type="Script" uid="uid://d1xaxosi0e3l3" path="res://components/comp_hurtbox.gd" id="6_53h5a"]
-[ext_resource type="Script" uid="uid://bxg0dc50gamxy" path="res://components/morte/morte_subcomp.gd" id="6_o4s0k"]
+[ext_resource type="Script" uid="uid://bxg0dc50gamxy" path="res://components/morte/Morte_SubComp.gd" id="6_o4s0k"]
 [ext_resource type="Texture2D" uid="uid://dsi3i0285lt4l" path="res://assets/sprites/icon.svg" id="27_0s4bq"]
 [ext_resource type="PackedScene" uid="uid://dkl5kqkk0aacp" path="res://components/camera/camera_simples.tscn" id="28_p57lk"]
 [ext_resource type="Script" uid="uid://dx1tw4mmnv15a" path="res://components/comp_hitbox.gd" id="28_rblxm"]
