@@ -2,18 +2,12 @@ extends Resource
 class_name AbilityResource
 
 @export_group("Identidade")
-@export var nome: String = "Habilidade"
+@export var nome: String = "Nova Habilidade"
 @export_enum("PASSIVA", "ATIVA") var modo_uso: String = "ATIVA"
 
-
-
-@export_subgroup("Regiões do Atlas")
-@export var atlas_1: Texture2D      
-@export var atlas_2: Texture2D 
-@export var atlas_3: Texture2D    
-
-
-
+# AbilityResource.gd
+@export_group("Visual")
+@export var camadas_custom: Array[CartaCamada] = []
 
 @export_group("Status e Poder")
 @export var cooldown: float = 2.0
@@ -21,5 +15,5 @@ class_name AbilityResource
 @export var multiplicador_velocidade: float = 1.0
 @export var debuff_velocidade: float = 1.0
 @export var concede_escalada: bool = false
-@export var bloqueia_pulo: bool = false
+@export var bloqueia_pulo: bool = false    
 @export var duracao_debuff: float = 3.0

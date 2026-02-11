@@ -1,10 +1,33 @@
 [gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://bcs7hpaeigtjq"]
 
 [ext_resource type="Script" uid="uid://gobb8jtlx32r" path="res://resources/AbilityResource.gd" id="1_4utuh"]
-[ext_resource type="Texture2D" uid="uid://dhbgftbtoy0jb" path="res://assets/Cards/pixelCardAssest_V01.png" id="1_abytv"]
+[ext_resource type="Script" uid="uid://cnxoil3kk8k5s" path="res://resources/card_resources/card_camada.gd" id="1_abytv"]
+[ext_resource type="Texture2D" uid="uid://dhbgftbtoy0jb" path="res://assets/Cards/pixelCardAssest_V01.png" id="2_es7d3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynaey"]
+atlas = ExtResource("2_es7d3")
+region = Rect2(250, 4, 100, 128)
+
+[sub_resource type="Resource" id="Resource_vsg1k"]
+script = ExtResource("1_abytv")
+textura = SubResource("AtlasTexture_ynaey")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq4tt"]
+atlas = ExtResource("2_es7d3")
+region = Rect2(226, 337, 100, 128)
+
+[sub_resource type="Resource" id="Resource_0btl7"]
+script = ExtResource("1_abytv")
+textura = SubResource("AtlasTexture_wq4tt")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
+
+[sub_resource type="Resource" id="Resource_8tuf3"]
+script = ExtResource("1_abytv")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
 
 [resource]
 script = ExtResource("1_4utuh")
 nome = "Garra"
-atlas_principal = ExtResource("1_abytv")
+camadas_custom = Array[ExtResource("1_abytv")]([SubResource("Resource_vsg1k"), SubResource("Resource_0btl7"), SubResource("Resource_8tuf3")])
 metadata/_custom_type_script = "uid://gobb8jtlx32r"

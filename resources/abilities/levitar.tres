@@ -1,12 +1,29 @@
 [gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://dxjm3klob1lqy"]
 
 [ext_resource type="Script" uid="uid://gobb8jtlx32r" path="res://resources/AbilityResource.gd" id="1_nq3b6"]
-[ext_resource type="Texture2D" uid="uid://dhbgftbtoy0jb" path="res://assets/Cards/pixelCardAssest_V01.png" id="1_vaf7s"]
+[ext_resource type="Script" uid="uid://cnxoil3kk8k5s" path="res://resources/card_resources/card_camada.gd" id="1_vaf7s"]
+[ext_resource type="Texture2D" uid="uid://dhbgftbtoy0jb" path="res://assets/Cards/pixelCardAssest_V01.png" id="2_v8u7n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub7ci"]
+atlas = ExtResource("2_v8u7n")
+region = Rect2(332, 337, 100, 128)
+
+[sub_resource type="Resource" id="Resource_wshpj"]
+script = ExtResource("1_vaf7s")
+textura = SubResource("AtlasTexture_ub7ci")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ffxp"]
+atlas = ExtResource("2_v8u7n")
+region = Rect2(14, 337, 100, 128)
+
+[sub_resource type="Resource" id="Resource_jo7qc"]
+script = ExtResource("1_vaf7s")
+textura = SubResource("AtlasTexture_7ffxp")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
 
 [resource]
 script = ExtResource("1_nq3b6")
 nome = "Levitar"
-atlas_principal = ExtResource("1_vaf7s")
-regiao_atlas = Rect2(0, 0, 100, 130)
-cor_interface = Color(0.56285006, 0.4152921, 0.96018237, 1)
+camadas_custom = Array[ExtResource("1_vaf7s")]([SubResource("Resource_wshpj"), SubResource("Resource_jo7qc")])
 metadata/_custom_type_script = "uid://gobb8jtlx32r"

@@ -1,10 +1,28 @@
 [gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://bgtyve5c4we6b"]
 
+[ext_resource type="Script" uid="uid://cnxoil3kk8k5s" path="res://resources/card_resources/card_camada.gd" id="1_1q1t7"]
 [ext_resource type="Script" uid="uid://gobb8jtlx32r" path="res://resources/AbilityResource.gd" id="1_dpsjx"]
 [ext_resource type="Texture2D" uid="uid://dhbgftbtoy0jb" path="res://assets/Cards/pixelCardAssest_V01.png" id="1_f8g02"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko1kt"]
+atlas = ExtResource("1_f8g02")
+region = Rect2(366, 4, 100, 128)
+
+[sub_resource type="Resource" id="Resource_sqoi0"]
+script = ExtResource("1_1q1t7")
+textura = SubResource("AtlasTexture_ko1kt")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu7cn"]
+atlas = ExtResource("1_f8g02")
+region = Rect2(120, 337, 100, 128)
+
+[sub_resource type="Resource" id="Resource_krou7"]
+script = ExtResource("1_1q1t7")
+textura = SubResource("AtlasTexture_nu7cn")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
 
 [resource]
 script = ExtResource("1_dpsjx")
 nome = "Gelo"
-atlas_principal = ExtResource("1_f8g02")
-cor_interface = Color(0.041532665, 0.7283125, 0.94875115, 1)
+camadas_custom = Array[ExtResource("1_1q1t7")]([SubResource("Resource_sqoi0"), SubResource("Resource_krou7"), null])

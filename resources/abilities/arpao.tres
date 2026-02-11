@@ -1,24 +1,52 @@
 [gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://blbxmio3f5it5"]
 
 [ext_resource type="Script" uid="uid://gobb8jtlx32r" path="res://resources/AbilityResource.gd" id="1_cg4dy"]
+[ext_resource type="Script" uid="uid://cnxoil3kk8k5s" path="res://resources/card_resources/card_camada.gd" id="1_q3nrd"]
+[ext_resource type="Texture2D" uid="uid://car2nd1dqu02v" path="res://assets/Cards/pixelCardAssest.png" id="2_c86bg"]
 [ext_resource type="Texture2D" uid="uid://dhbgftbtoy0jb" path="res://assets/Cards/pixelCardAssest_V01.png" id="2_q3nrd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q3nrd"]
-atlas = ExtResource("2_q3nrd")
-region = Rect2(250, 4, 100, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i34yp"]
-atlas = ExtResource("2_q3nrd")
-region = Rect2(22, 136, 86, 72)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_c86bg"]
+atlas = ExtResource("2_c86bg")
+region = Rect2(14, 4, 100, 128)
+
+[sub_resource type="Resource" id="Resource_37p32"]
+script = ExtResource("1_q3nrd")
+textura = SubResource("AtlasTexture_c86bg")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c461"]
 atlas = ExtResource("2_q3nrd")
-region = Rect2(135, 224, 96, 29)
+region = Rect2(14, 337, 100, 128)
+
+[sub_resource type="Resource" id="Resource_eoo08"]
+script = ExtResource("1_q3nrd")
+textura = SubResource("AtlasTexture_4c461")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37p32"]
+atlas = ExtResource("2_q3nrd")
+region = Rect2(140, 136, 86, 72)
+
+[sub_resource type="Resource" id="Resource_4c461"]
+script = ExtResource("1_q3nrd")
+textura = SubResource("AtlasTexture_37p32")
+tamanho = Vector2(150, 150)
+posicao = Vector2(75, 50)
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoo08"]
+atlas = ExtResource("2_q3nrd")
+region = Rect2(568, 172, 26, 26)
+
+[sub_resource type="Resource" id="Resource_hbgxg"]
+script = ExtResource("1_q3nrd")
+textura = SubResource("AtlasTexture_eoo08")
+tamanho = Vector2(40, 40)
+posicao = Vector2(70, 50)
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
 
 [resource]
 script = ExtResource("1_cg4dy")
 nome = "Arpão"
-atlas_1 = SubResource("AtlasTexture_q3nrd")
-atlas_2 = SubResource("AtlasTexture_i34yp")
-atlas_3 = SubResource("AtlasTexture_c86bg")
+camadas_custom = Array[ExtResource("1_q3nrd")]([SubResource("Resource_37p32"), SubResource("Resource_eoo08"), SubResource("Resource_4c461"), SubResource("Resource_hbgxg")])
 metadata/_custom_type_script = "uid://gobb8jtlx32r"

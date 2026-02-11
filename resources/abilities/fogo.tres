@@ -1,7 +1,28 @@
 [gd_resource type="Resource" script_class="AbilityResource" format=3 uid="uid://dluivowikllg5"]
 
 [ext_resource type="Script" uid="uid://gobb8jtlx32r" path="res://resources/AbilityResource.gd" id="1_k6au1"]
+[ext_resource type="Script" uid="uid://cnxoil3kk8k5s" path="res://resources/card_resources/card_camada.gd" id="1_qpssl"]
+[ext_resource type="Texture2D" uid="uid://dhbgftbtoy0jb" path="res://assets/Cards/pixelCardAssest_V01.png" id="2_5m7ib"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oblvj"]
+atlas = ExtResource("2_5m7ib")
+region = Rect2(133, 4, 100, 128)
+
+[sub_resource type="Resource" id="Resource_nfodb"]
+script = ExtResource("1_qpssl")
+textura = SubResource("AtlasTexture_oblvj")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u8ft"]
+atlas = ExtResource("2_5m7ib")
+region = Rect2(120, 337, 100, 128)
+
+[sub_resource type="Resource" id="Resource_bc10u"]
+script = ExtResource("1_qpssl")
+textura = SubResource("AtlasTexture_5u8ft")
+metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
 
 [resource]
 script = ExtResource("1_k6au1")
 nome = "Fogo"
+camadas_custom = Array[ExtResource("1_qpssl")]([SubResource("Resource_nfodb"), SubResource("Resource_bc10u"), null])
