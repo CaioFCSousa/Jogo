@@ -1,5 +1,5 @@
 extends Node
-class_name morteSimples_SubComp
+class_name MorteSimples_SubComp
 
 """
 !!!! ESSE COMPONETE FAZ QUE O OBJETO SUMA QUANDO CHEGAR A ZERO !!!!

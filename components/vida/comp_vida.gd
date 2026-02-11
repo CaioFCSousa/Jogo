@@ -54,6 +54,8 @@ func tomar_dano(valor : float):
 	if vida <= vida_Minima:
 		morreu.emit()
 		print("morri")
+	
+	# indica que a vida mudou sempre que toma dano
 	vida_mudou.emit()
 
 # função de curar a vida
