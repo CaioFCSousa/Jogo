@@ -21,8 +21,9 @@ func _ready() -> void:
 	camera.zoom = zoom_da_camera
 
 func _process(delta: float) -> void:
-	posicao = alvo.global_position + offset
-	global_position = global_position.lerp(posicao, suavidade)
+	if alvo != null:
+		posicao = alvo.global_position + offset
+		global_position = global_position.lerp(posicao, suavidade)
 
 func _input(event):
 	if event is InputEventMouseButton and mouse:

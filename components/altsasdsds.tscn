@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dubkqganad4kt"]
+
+[ext_resource type="Texture2D" uid="uid://b61voggctlaby" path="res://assets/sprites/teste.tres" id="1_4m512"]
+[ext_resource type="Script" uid="uid://coycods2vyqe5" path="res://teste_atlas.gd" id="2_g1sxk"]
+
+[node name="Node2D" type="Node2D" unique_id=1507380189]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=115741771]
+position = Vector2(315, 254.00003)
+scale = Vector2(7.1470866, 7.1608267)
+texture = ExtResource("1_4m512")
+script = ExtResource("2_g1sxk")
+texturaa = ExtResource("1_4m512")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1601197867]

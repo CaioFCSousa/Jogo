@@ -24,7 +24,6 @@ func _ready() -> void:
 	# 1. MUDAR A COR DA IMAGEM
 	# O modulate pinta o seu AnimatedSprite2D com a cor escolhida
 	anim.modulate = cor_do_personagem
-
 	# 2. DEFINIR TECLAS POR JOGADOR
 	if player_id == "P1":
 		acao_esquerda = "p1_esquerda"
