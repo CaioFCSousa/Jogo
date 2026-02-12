@@ -77,8 +77,6 @@ func animar_selecao(alvo: Vector2):
 
 	tw.tween_property(self, "global_position", alvo - (size / 2), 0.6)
 	
-	# Aumenta um pouco e dá um brilho
-	tw.tween_property(self, "scale", Vector2(1.2, 1.2), 0.5).set_trans(Tween.TRANS_BACK)
 
 	
 

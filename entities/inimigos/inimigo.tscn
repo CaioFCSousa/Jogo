@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://n0q6i1ja13lu"]
+
+[ext_resource type="Script" uid="uid://4dgxmyd2pfdu" path="res://components/vida/comp_vida.gd" id="1_2v2rr"]
+[ext_resource type="Script" uid="uid://dig2y6ekp8bx3" path="res://components/morte/MorteRespawn_SubComp.gd" id="2_6n81q"]
+[ext_resource type="Script" uid="uid://dx1tw4mmnv15a" path="res://components/comp_hitbox.gd" id="3_ktwhv"]
+[ext_resource type="Script" uid="uid://d1xaxosi0e3l3" path="res://components/comp_hurtbox.gd" id="4_seonr"]
+
+[node name="congumelo_inimigo" type="CharacterBody2D" unique_id=833525537]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1176920456]
+animation = &"idle"
+
+[node name="Vida_Comp" type="Node" parent="." unique_id=542514996]
+script = ExtResource("1_2v2rr")
+metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
+
+[node name="MorteRespawn_SubComp" type="Node" parent="Vida_Comp" unique_id=2089235968]
+script = ExtResource("2_6n81q")
+metadata/_custom_type_script = "uid://dig2y6ekp8bx3"
+
+[node name="comp_hitbox" type="Area2D" parent="." unique_id=1985880423]
+script = ExtResource("3_ktwhv")
+metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
+
+[node name="comp_hurtbox" type="Area2D" parent="." unique_id=1412067333]
+script = ExtResource("4_seonr")
+metadata/_custom_type_script = "uid://d1xaxosi0e3l3"

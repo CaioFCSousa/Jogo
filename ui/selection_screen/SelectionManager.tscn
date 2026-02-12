@@ -8,14 +8,17 @@
 [ext_resource type="Resource" uid="uid://dxjm3klob1lqy" path="res://resources/abilities/levitar.tres" id="5_2rx4j"]
 [ext_resource type="Resource" uid="uid://bcs7hpaeigtjq" path="res://resources/abilities/garras.tres" id="5_3idql"]
 [ext_resource type="PackedScene" uid="uid://beu4h7wor0cew" path="res://ui/card/CardUI.tscn" id="8_1r7wc"]
+[ext_resource type="Texture2D" uid="uid://cnumlo6kexk6r" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/backgraudcard.png" id="9_3idql"]
 
-[node name="SelectionManager" type="CanvasLayer" unique_id=162087694 node_paths=PackedStringArray("container_p1", "container_p2")]
+[node name="SelectionManager" type="CanvasLayer" unique_id=162087694 node_paths=PackedStringArray("container_p1", "container_p2", "moldura_p1", "moldura_p2")]
 layer = 10
 script = ExtResource("1_grph0")
 lista_habilidades = Array[ExtResource("2_2rx4j")]([ExtResource("3_8jko0"), ExtResource("4_1r7wc"), ExtResource("3_1r7wc"), ExtResource("5_3idql"), ExtResource("5_2rx4j")])
 card_scene = ExtResource("8_1r7wc")
 container_p1 = NodePath("HBoxP1")
 container_p2 = NodePath("HBoxP2")
+moldura_p1 = NodePath("PainelP1/MolduraP1")
+moldura_p2 = NodePath("PainelP2/MolduraP2")
 
 [node name="HBoxP1" type="HBoxContainer" parent="." unique_id=474267650]
 anchors_preset = 6
@@ -23,24 +26,65 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -0.080078125
+offset_left = -49.08008
+offset_right = -49.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset = Vector2(25, 25)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 25
+theme_override_constants/separation = -50
 alignment = 1
 
 [node name="HBoxP2" type="HBoxContainer" parent="." unique_id=2113536043]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 50.0
 offset_top = -0.16003418
-offset_right = 0.080078125
+offset_right = 50.08008
 offset_bottom = 0.16003418
 grow_vertical = 2
 pivot_offset = Vector2(25, 25)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 25
+theme_override_constants/separation = -70
+alignment = 1
+
+[node name="PainelP2" type="Control" parent="." unique_id=1101313966]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MolduraP2" type="NinePatchRect" parent="PainelP2" unique_id=871709118]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_3idql")
+
+[node name="container_p2" type="HBoxContainer" parent="PainelP2" unique_id=219963542]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PainelP1" type="Control" parent="." unique_id=1679963666]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MolduraP1" type="NinePatchRect" parent="PainelP1" unique_id=788073404]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_3idql")
+
+[node name="container_p1" type="HBoxContainer" parent="PainelP1" unique_id=445753867]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

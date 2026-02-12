@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="controle" format=3 uid="uid://bp5tgdtfsmd0m"]
+
+[ext_resource type="Script" uid="uid://n3gn0xiu1pec" path="res://entities/player/controle.gd" id="1_gjsdc"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_gjsdc"]
+action = &"p2_slide"
+
+[sub_resource type="InputEventAction" id="InputEventAction_vux0p"]
+action = &"p2_pulo"
+
+[sub_resource type="InputEventAction" id="InputEventAction_twqea"]
+action = &"p2_direita"
+
+[sub_resource type="InputEventAction" id="InputEventAction_caljc"]
+action = &"p2_esquerda"
+
+[resource]
+script = ExtResource("1_gjsdc")
+cima = SubResource("InputEventAction_vux0p")
+baixo = SubResource("InputEventAction_gjsdc")
+direita = SubResource("InputEventAction_twqea")
+esquerda = SubResource("InputEventAction_caljc")

@@ -1,0 +1,114 @@
+[gd_scene format=4 uid="uid://bwc8mi564105v"]
+
+[ext_resource type="TileSet" uid="uid://s1jae7bp41go" path="res://world/tileset/blocos_padroes.tres" id="1_o4s0k"]
+[ext_resource type="Shader" uid="uid://dy8hp80pwu1f" path="res://assets/shaders/abigobado.gdshader" id="2_p57lk"]
+[ext_resource type="Script" uid="uid://dq2q6ymx5avyj" path="res://components/comportamentos/vai_e_volta.gd" id="3_f5b46"]
+[ext_resource type="Script" uid="uid://pu7qmxn02b2v" path="res://components/vida/comp_vida.gd" id="5_f5b46"]
+[ext_resource type="PackedScene" uid="uid://du27fc4g0oifh" path="res://entities/player/Player.tscn" id="5_jiql5"]
+[ext_resource type="PackedScene" uid="uid://ctr3pc6k5ig3o" path="res://ui/vida_ui/ui_vida_simples.tscn" id="5_o4s0k"]
+[ext_resource type="Script" uid="uid://c77k71sdkseuk" path="res://components/hitbox/comp_hurtbox.gd" id="6_53h5a"]
+[ext_resource type="Script" uid="uid://cvckhxyjl4eay" path="res://components/morte/morte_subcomp.gd" id="6_o4s0k"]
+[ext_resource type="Resource" uid="uid://cmm7pyhgsx7og" path="res://entities/player/player1.tres" id="12_2kdv4"]
+[ext_resource type="Texture2D" uid="uid://bakt1lwevo1t5" path="res://assets/sprites/icon.svg" id="27_0s4bq"]
+[ext_resource type="PackedScene" uid="uid://dkl5kqkk0aacp" path="res://components/camera/camera_simples.tscn" id="28_p57lk"]
+[ext_resource type="Script" uid="uid://bhet3qwx8rvta" path="res://components/hitbox/comp_hitbox.gd" id="28_rblxm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5b46"]
+shader = ExtResource("2_p57lk")
+shader_parameter/pode = false
+shader_parameter/velocidade = 0.0
+
+[node name="TestandoComponetes" type="Node2D" unique_id=1627596337]
+
+[node name="respaw" type="Node2D" parent="." unique_id=436312033]
+position = Vector2(-191, -5)
+
+[node name="terreno" type="TileMapLayer" parent="." unique_id=1593613103]
+position = Vector2(20.845, -52.545)
+tile_map_data = PackedByteArray("AAD//wIAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAAEAAIAAAABAAAAAAAFAAIAAAABAAAAAAAGAAIAAAABAAAAAAD+/wIAAAABAAAAAAD9/wIAAAABAAAAAAD8/wIAAAAAAAAAAAACAP//AQAEAAIAAAADAP//AQAEAAIAAAAEAP//AQAEAAIAAAD///7/AQAEAAIAAAD+//7/AQAEAAIAAAD9//7/AQAEAAIAAAACAPv/AQAEAAIAAAADAPv/AQAEAAIAAAAEAPv/AQAEAAIAAAAHAAIAAAABAAAAAAAIAAIAAAABAAAAAAAJAAIAAAABAAAAAAAKAAIAAAABAAEAAAAKAAEAAAAAAAEAAAAKAAAAAAAAAAEAAAAKAP//AAAAAAEAAAAKAP7/AAAAAAEAAAAKAP3/AAAAAAEAAAAKAPz/AAAAAAEAAAAKAPv/AAAAAAEAAAAJAP//AQAEAAIAAAAIAP//AQAEAAIAAAAKAPr/AAAAAAEAAAALAPr/AAACAAEAAAALAPv/AAACAAEAAAALAPz/AAACAAEAAAALAP3/AAACAAEAAAALAP7/AAACAAEAAAALAP//AAACAAEAAAALAAAAAAACAAEAAAALAAEAAAACAAEAAAALAAIAAAACAAEAAAALAAMAAAACAAEAAAAKAAMAAAABAAIAAAAJAAMAAAABAAIAAAAIAAMAAAABAAIAAAAHAAMAAAABAAIAAAAGAAMAAAABAAIAAAAFAAMAAAABAAIAAAAEAAMAAAABAAIAAAADAAMAAAABAAIAAAACAAMAAAABAAIAAAABAAMAAAABAAIAAAAAAAMAAAABAAIAAAD//wMAAAABAAIAAAD+/wMAAAABAAIAAAD9/wMAAAABAAIAAAD8/wMAAAABAAIAAAD7/wMAAAABAAAAAAD6/wMAAAABAAAAAAD5/wMAAAABAAAAAAD4/wMAAAABAAAAAAD3/wMAAAABAAAAAAD2/wMAAAABAAAAAAD1/wMAAAABAAAAAADz/wIAAAACAAEAAADz/wEAAAACAAEAAADz/wAAAAACAAEAAADz////AAACAAEAAADz/wMAAAABAAEAAAD0/wMAAAABAAAAAADz//7/AAABAAEAAADz//3/AAACAAEAAADz//z/AAACAAEAAADz//v/AAACAAEAAADz//r/AAACAAEAAADz//n/AAACAAEAAADz//j/AAACAAEAAADz//f/AAABAAEAAADz//b/AAACAAEAAADz//X/AAACAAEAAAAKAPn/AAAAAAEAAAAKAPj/AAAAAAEAAAAKAPf/AAAAAAEAAAALAPj/AAACAAEAAAALAPn/AAACAAEAAAALAPf/AAACAAEAAAD7/wQAAAACAAIAAAD6/wQAAAABAAIAAAD5/wQAAAABAAIAAAD4/wQAAAABAAIAAAD3/wQAAAABAAIAAAD2/wQAAAABAAIAAAD1/wQAAAABAAIAAAD0/wQAAAABAAIAAADz/wQAAAABAAIAAADy/wMAAAAAAAEAAADy/wIAAAAAAAEAAADy/wEAAAAAAAEAAADy/wAAAAAAAAEAAADy////AAAAAAEAAADy//7/AAAAAAEAAADy//3/AAAAAAEAAADy//z/AAAAAAEAAADy//v/AAAAAAEAAADy//r/AAAAAAEAAADy//n/AAAAAAEAAADy//j/AAAAAAEAAADy//f/AAAAAAEAAADy//b/AAAAAAEAAADy//X/AAAAAAEAAAD2/wAAAQAEAAIAAAD3/wAAAQAEAAIAAAD4/wAAAQAEAAIAAAD5/wAAAQAEAAIAAAD6/wAAAQAEAAIAAAD0//7/AQAEAAIAAAD1//7/AQAEAAIAAAD2//z/AQAEAAIAAAD3//z/AQAEAAIAAAD4//z/AQAEAAIAAAD5//z/AQAEAAIAAAD6//z/AQAEAAIAAAD7//z/AQAEAAIAAAD3//v/AQAEAAIAAAD3//r/AQAEAAIAAAD3//n/AQAEAAIAAAD0//f/AAAAAAAAAAD1//f/AAAAAAAAAADy//T/AAAAAAEAAADy//P/AAAAAAEAAADy//L/AAAAAAAAAADz//L/AAACAAAAAADz//P/AAACAAEAAADz//T/AAACAAEAAAD5//b/AQAEAAIAAAD6//b/AQAEAAIAAAD7//b/AQAEAAIAAAD8//b/AQAEAAIAAAD9//b/AQAEAAIAAAD+//b/AQAEAAIAAAD///b/AQAEAAIAAAAAAPb/AQAEAAIAAAABAPb/AQAEAAIAAAACAPb/AQAEAAIAAAADAPb/AQAEAAIAAAAEAPb/AQAEAAIAAAAFAPb/AQAEAAIAAAAGAPb/AQAEAAIAAAAHAPb/AQAEAAIAAAAKAPb/AAAAAAEAAAAKAPX/AAAAAAEAAAAKAPT/AAAAAAEAAAAKAPP/AAAAAAEAAAAKAPL/AAAAAAAAAAALAPL/AAACAAAAAAALAPP/AAACAAEAAAALAPT/AAACAAEAAAALAPX/AAACAAEAAAALAPb/AAACAAEAAAABAAEAAQADAAIAAAD+//3/AQADAAIAAAD///3/AQADAAIAAAD5//v/AQADAAIAAAD6//v/AQADAAIAAAD4////AQADAAIAAAAEAP7/AQADAAIAAADy/wQAAAAAAAIAAAA=")
+tile_set = ExtResource("1_o4s0k")
+
+[node name="background" type="TileMapLayer" parent="terreno" unique_id=739173472]
+z_index = -1
+tile_map_data = PackedByteArray("AAD0//b/AgABAAEAAAD0//f/AgABAAEAAAD0//j/AgABAAEAAAD0//n/AgABAAEAAAD0//r/AgABAAEAAAD0//v/AgABAAEAAAD0//z/AgABAAEAAAD0//3/AgABAAEAAAD0//7/AgABAAEAAAD0////AgABAAEAAAD0/wAAAgABAAEAAAD0/wEAAgABAAEAAAD0/wIAAgABAAEAAAD1//b/AgABAAEAAAD1//f/AgABAAEAAAD1//j/AgABAAEAAAD1//n/AgABAAEAAAD1//r/AgABAAEAAAD1//v/AgABAAEAAAD1//z/AgABAAEAAAD1//3/AgABAAEAAAD1//7/AgABAAEAAAD1////AgABAAEAAAD1/wAAAgABAAEAAAD1/wEAAgABAAEAAAD1/wIAAgABAAEAAAD2//b/AgABAAEAAAD2//f/AgABAAEAAAD2//j/AgABAAEAAAD2//n/AgABAAEAAAD2//r/AgABAAEAAAD2//v/AgABAAEAAAD2//z/AgABAAEAAAD2//3/AgABAAEAAAD2//7/AgABAAEAAAD2////AgABAAEAAAD2/wAAAgABAAEAAAD2/wEAAgABAAEAAAD2/wIAAgABAAEAAAD3//b/AgABAAEAAAD3//f/AgABAAEAAAD3//j/AgABAAEAAAD3//n/AgABAAEAAAD3//r/AgABAAEAAAD3//v/AgABAAEAAAD3//z/AgABAAEAAAD3//3/AgABAAEAAAD3//7/AgABAAEAAAD3////AgABAAEAAAD3/wAAAgABAAEAAAD3/wEAAgABAAEAAAD3/wIAAgABAAEAAAD4//b/AgABAAEAAAD4//f/AgABAAEAAAD4//j/AgABAAEAAAD4//n/AgABAAEAAAD4//r/AgABAAEAAAD4//v/AgABAAEAAAD4//z/AgABAAEAAAD4//3/AgABAAEAAAD4//7/AgABAAEAAAD4////AgABAAEAAAD4/wAAAgABAAEAAAD4/wEAAgABAAEAAAD4/wIAAgABAAEAAAD5//b/AgABAAEAAAD5//f/AgABAAEAAAD5//j/AgABAAEAAAD5//n/AgABAAEAAAD5//r/AgABAAEAAAD5//v/AgABAAEAAAD5//z/AgABAAEAAAD5//3/AgABAAEAAAD5//7/AgABAAEAAAD5////AgABAAEAAAD5/wAAAgABAAEAAAD5/wEAAgABAAEAAAD5/wIAAgABAAEAAAD6//b/AgABAAEAAAD6//f/AgABAAEAAAD6//j/AgABAAEAAAD6//n/AgABAAEAAAD6//r/AgABAAEAAAD6//v/AgABAAEAAAD6//z/AgABAAEAAAD6//3/AgABAAEAAAD6//7/AgABAAEAAAD6////AgABAAEAAAD6/wAAAgABAAEAAAD6/wEAAgABAAEAAAD6/wIAAgABAAEAAAD7//b/AgABAAEAAAD7//f/AgABAAEAAAD7//j/AgABAAEAAAD7//n/AgABAAEAAAD7//r/AgABAAEAAAD7//v/AgABAAEAAAD7//z/AgABAAEAAAD7//3/AgABAAEAAAD7//7/AgABAAEAAAD7////AgABAAEAAAD7/wAAAgABAAEAAAD7/wEAAgABAAEAAAD7/wIAAgABAAEAAAADAAEAAgABAAEAAAADAAAAAgABAAEAAAADAP//AgABAAEAAAADAP7/AgABAAEAAAADAP3/AgABAAEAAAADAPz/AgABAAEAAAADAPv/AgABAAEAAAADAPr/AgABAAEAAAADAPn/AgABAAEAAAADAPj/AgABAAEAAAADAPf/AgABAAEAAAAIAAAAAgABAAEAAAAIAAEAAgABAAEAAAAJAAAAAgABAAEAAAAJAAEAAgABAAEAAAA=")
+tile_set = ExtResource("1_o4s0k")
+collision_enabled = false
+
+[node name="inimigu" type="Sprite2D" parent="." unique_id=1889792221]
+position = Vector2(170, -15)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("27_0s4bq")
+script = ExtResource("3_f5b46")
+velocidade = 5.0
+quanto = 20.0
+
+[node name="comp_hitbox" type="Area2D" parent="inimigu" unique_id=1883546936]
+script = ExtResource("28_rblxm")
+dano = 3.0
+metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="inimigu/comp_hitbox" unique_id=1796840484]
+polygon = PackedVector2Array(-52, -61, -61, -52, -61, 54, -53, 62, 51, 62, 61, 53, 61, -52, 51, -62)
+
+[node name="inimigu2" type="Sprite2D" parent="." unique_id=334847788]
+position = Vector2(127, -14.999999)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("27_0s4bq")
+
+[node name="comp_hitbox" type="Area2D" parent="inimigu2" unique_id=1106196829]
+script = ExtResource("28_rblxm")
+metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="inimigu2/comp_hitbox" unique_id=325907188]
+polygon = PackedVector2Array(-52, -61, -61, -52, -61, 54, -53, 62, 51, 62, 61, 53, 61, -52, 51, -62)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=859370932]
+position = Vector2(13, 1)
+
+[node name="inimigu3" type="Sprite2D" parent="CharacterBody2D" unique_id=674934197]
+position = Vector2(96, -91)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("27_0s4bq")
+
+[node name="PanelContainer2" parent="CharacterBody2D/inimigu3" unique_id=1355360307 node_paths=PackedStringArray("comp_vida") instance=ExtResource("5_o4s0k")]
+offset_left = -52.631577
+offset_top = -115.78947
+offset_right = 139.6761
+offset_bottom = -55.060707
+comp_vida = NodePath("../comp_Vida")
+
+[node name="comp_Vida" type="Node" parent="CharacterBody2D/inimigu3" unique_id=252079177 node_paths=PackedStringArray("dono")]
+script = ExtResource("5_f5b46")
+dono = NodePath("../..")
+vida = 5.0
+vida_Maxima = 5.0
+metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
+
+[node name="morteSimples_SubComp" type="Node" parent="CharacterBody2D/inimigu3/comp_Vida" unique_id=1819057840 node_paths=PackedStringArray("vida_comp")]
+script = ExtResource("6_o4s0k")
+vida_comp = NodePath("..")
+metadata/_custom_type_script = "uid://bxg0dc50gamxy"
+
+[node name="comp_hurtbox" type="Area2D" parent="CharacterBody2D/inimigu3" unique_id=439241869 node_paths=PackedStringArray("vida")]
+script = ExtResource("6_53h5a")
+vida = NodePath("../comp_Vida")
+metadata/_custom_type_script = "uid://d1xaxosi0e3l3"
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="CharacterBody2D/inimigu3/comp_hurtbox" unique_id=24908366]
+polygon = PackedVector2Array(-52, -61, -61, -52, -61, 54, -53, 62, 51, 62, 61, 53, 61, -52, 51, -62)
+
+[node name="CameraNormal" parent="." unique_id=1787818286 node_paths=PackedStringArray("alvo") instance=ExtResource("28_p57lk")]
+alvo = NodePath("../Player")
+offset = Vector2(0, -25.945)
+zoom_da_camera = Vector2(2, 2)
+scroll = 0.15000000000000568
+
+[node name="Player" parent="." unique_id=1949273261 instance=ExtResource("5_jiql5")]
+material = SubResource("ShaderMaterial_f5b46")
+position = Vector2(-13, -17)
+controles = ExtResource("12_2kdv4")
+
+[node name="morteRespawn_SubComp" parent="Player/vida_Comp" parent_id_path=PackedInt32Array(1949273261, 1755289048) index="1" unique_id=725625582 node_paths=PackedStringArray("local_respawn")]
+local_respawn = NodePath("../../../respaw")
+
+[editable path="Player"]

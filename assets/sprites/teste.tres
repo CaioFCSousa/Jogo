@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://b61voggctlaby"]
+
+[ext_resource type="Texture2D" uid="uid://brv2vrdfrglf" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/mushroom/mushroom_spritesheet.png" id="1_c0wa7"]
+
+[resource]
+atlas = ExtResource("1_c0wa7")
+region = Rect2(0, 0, 16, 16)

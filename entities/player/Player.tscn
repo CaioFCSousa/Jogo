@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://du27fc4g0oifh"]
 
 [ext_resource type="Texture2D" uid="uid://dkdtoq0px22ld" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_4.png" id="1_44cfe"]
-[ext_resource type="Script" uid="uid://bmcjfem120ntp" path="res://entities/player/movimentacao_Player.gd" id="1_dd465"]
+[ext_resource type="Script" uid="uid://beehvxf82c3uh" path="res://entities/player/movimentacao_Player.gd" id="1_dd465"]
 [ext_resource type="Texture2D" uid="uid://b6bib5c4n54ik" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_3.png" id="2_2dyae"]
+[ext_resource type="Texture2D" uid="uid://8w64us45culj" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_death_anim_strip_8.png" id="2_d168t"]
 [ext_resource type="Texture2D" uid="uid://c8iphyjj6rqao" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_5.png" id="2_dd465"]
 [ext_resource type="Texture2D" uid="uid://cmg1exu6tpydl" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_4.png" id="3_2u5n8"]
 [ext_resource type="Texture2D" uid="uid://bfcrxmi4ahnl8" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_6.png" id="3_lhvu3"]
@@ -22,9 +23,76 @@
 [ext_resource type="Texture2D" uid="uid://dgp42epwaq3m1" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Run/herochar_run_anim_strip_11.png" id="19_lmwkj"]
 [ext_resource type="Texture2D" uid="uid://3qqsdg31q880" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_after_jump_dust_anim_strip_4.png" id="21_73nau"]
 [ext_resource type="Texture2D" uid="uid://da8qrwo3b163" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_before_jump_dust_anim_strip_4.png" id="22_skrk8"]
+[ext_resource type="Script" uid="uid://c77k71sdkseuk" path="res://components/hitbox/comp_hurtbox.gd" id="24_btcch"]
+[ext_resource type="Script" uid="uid://bhet3qwx8rvta" path="res://components/hitbox/comp_hitbox.gd" id="25_unwxu"]
+[ext_resource type="Script" uid="uid://pu7qmxn02b2v" path="res://components/vida/comp_vida.gd" id="26_2fpie"]
+[ext_resource type="PackedScene" uid="uid://ctr3pc6k5ig3o" path="res://ui/vida_ui/ui_vida_simples.tscn" id="27_i3i7k"]
+[ext_resource type="Script" uid="uid://cyx78f6q0qlyd" path="res://components/morte/MorteRespawn_SubComp.gd" id="28_m3vrt"]
+[ext_resource type="Script" uid="uid://bpx0vgy3edabg" path="res://entities/player/imortalidade_temp_subComp.gd" id="29_unwxu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj2y3"]
+atlas = ExtResource("2_d168t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnvcq"]
+atlas = ExtResource("2_d168t")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o0g8"]
+atlas = ExtResource("2_d168t")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_minwf"]
+atlas = ExtResource("2_d168t")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btcch"]
+atlas = ExtResource("2_d168t")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unwxu"]
+atlas = ExtResource("2_d168t")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fpie"]
+atlas = ExtResource("2_d168t")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3i7k"]
+atlas = ExtResource("2_d168t")
+region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qp52p"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj2y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnvcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o0g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_minwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btcch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unwxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fpie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3i7k")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_2dyae")
@@ -108,8 +176,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u5n8"]
-size = Vector2(16, 21)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unwxu"]
+radius = 8.0
+height = 21.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ye16i"]
 atlas = ExtResource("21_73nau")
@@ -180,21 +249,93 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5qbdv"]
+radius = 9.0
+height = 21.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wbbrj"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1949273261]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_dd465")
+
+[node name="PanelContainer" parent="." unique_id=1355360307 node_paths=PackedStringArray("comp_vida") instance=ExtResource("27_i3i7k")]
+offset_left = -32.0
+offset_top = -39.0
+offset_right = 91.0
+offset_bottom = -2.0
+comp_vida = NodePath("../vida_Comp")
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1858808838]
 position = Vector2(0, 1)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_qp52p")
-animation = &"walk"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1147829142]
-position = Vector2(-1, 2.5)
-shape = SubResource("RectangleShape2D_2u5n8")
+position = Vector2(-1, 3)
+shape = SubResource("CapsuleShape2D_unwxu")
 
 [node name="Fumaca" type="AnimatedSprite2D" parent="." unique_id=1934436108]
-position = Vector2(-7, 0)
+position = Vector2(-16, -1)
 sprite_frames = SubResource("SpriteFrames_a7mna")
 animation = &"pulo"
 offset = Vector2(0, 6)
+
+[node name="comp_hurtbox" type="Area2D" parent="." unique_id=182984278 node_paths=PackedStringArray("vida")]
+collision_mask = 3
+script = ExtResource("24_btcch")
+vida = NodePath("../vida_Comp")
+metadata/_custom_type_script = "uid://d1xaxosi0e3l3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hurtbox" unique_id=1544569058]
+visible = false
+position = Vector2(-1, 2.5)
+shape = SubResource("CapsuleShape2D_5qbdv")
+debug_color = Color(0.65361506, 0.8712522, 0.44159812, 0.41960785)
+
+[node name="texto_debug" type="Label" parent="comp_hurtbox" unique_id=1281069912]
+offset_left = -42.0
+offset_top = -34.0
+offset_right = -2.0
+offset_bottom = -11.0
+metadata/_edit_use_anchors_ = true
+
+[node name="comp_hitbox" type="Area2D" parent="." unique_id=2018055592]
+collision_layer = 2
+monitoring = false
+script = ExtResource("25_unwxu")
+metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hitbox" unique_id=686249236]
+position = Vector2(10, 3)
+shape = SubResource("CircleShape2D_wbbrj")
+debug_color = Color(0.91, 0.12376004, 0.03640002, 0.41960785)
+
+[node name="vida_Comp" type="Node" parent="." unique_id=1755289048 node_paths=PackedStringArray("dono")]
+script = ExtResource("26_2fpie")
+dono = NodePath("..")
+vida = 3.0
+vida_Maxima = 3.0
+regeneracao = true
+metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
+
+[node name="invecibilidade_tempo" type="Timer" parent="vida_Comp" unique_id=818393532]
+one_shot = true
+
+[node name="morteRespawn_SubComp" type="Node" parent="vida_Comp" unique_id=725625582 node_paths=PackedStringArray("vida_comp", "tempo")]
+script = ExtResource("28_m3vrt")
+vida_comp = NodePath("..")
+tempo = NodePath("../respawn_tempo")
+
+[node name="imortalTemp_SubComp" type="Node" parent="vida_Comp" unique_id=1350577940 node_paths=PackedStringArray("vida_comp", "tempo_imortal")]
+script = ExtResource("29_unwxu")
+vida_comp = NodePath("..")
+tempo_imortal = NodePath("../invecibilidade_tempo")
+
+[node name="respawn_tempo" type="Timer" parent="vida_Comp" unique_id=1757415359]
+wait_time = 3.0
+one_shot = true

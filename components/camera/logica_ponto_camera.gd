@@ -50,7 +50,11 @@ func _process(delta: float) -> void:
 	var pontoMedio : Vector2 = Vector2(mediaX, mediaY)
 	
 	# define a posição da camera em relação aos dois pontos
-	pontoMedio += Vector2(offsetX, offsetY) # define o deslocamento relativo ao ponto central
+	
+	# verifca se subiu dms
+	
+	# aplica o deslocamaneto ao ponto medio
+	pontoMedio += Vector2(offsetX, offsetY)
 	Meio.global_position = pontoMedio.lerp(pontoMedio, suavidade)
 	
 	var distancia = alvo1.global_position.distance_to(alvo2.global_position)

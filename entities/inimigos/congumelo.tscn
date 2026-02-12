@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://sdpdjhcrgl2"]
+
+[ext_resource type="Script" uid="uid://dhfcwatgskugc" path="res://entities/inimigos/congumelo.gd" id="1_gcc27"]
+[ext_resource type="SpriteFrames" uid="uid://c00h56v44hgep" path="res://entities/inimigos/congumelo.tres" id="1_l8ejs"]
+[ext_resource type="Script" uid="uid://pu7qmxn02b2v" path="res://components/vida/comp_vida.gd" id="1_nmqgl"]
+[ext_resource type="Script" uid="uid://bhet3qwx8rvta" path="res://components/hitbox/comp_hitbox.gd" id="3_gcc27"]
+[ext_resource type="Script" uid="uid://c77k71sdkseuk" path="res://components/hitbox/comp_hurtbox.gd" id="4_hptil"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l8ejs"]
+radius = 6.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcc27"]
+size = Vector2(20, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hptil"]
+size = Vector2(14, 10)
+
+[node name="Node2D" type="CharacterBody2D" unique_id=833525537]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_gcc27")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1176920456]
+sprite_frames = ExtResource("1_l8ejs")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1716548450]
+shape = SubResource("CapsuleShape2D_l8ejs")
+
+[node name="Vida_Comp" type="Node" parent="." unique_id=542514996]
+script = ExtResource("1_nmqgl")
+vida = 3.0
+vida_Maxima = 3.0
+metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
+
+[node name="comp_hitbox" type="Area2D" parent="." unique_id=1985880423]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("3_gcc27")
+metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hitbox" unique_id=1553684161]
+shape = SubResource("RectangleShape2D_gcc27")
+debug_color = Color(0.99, 0, 0, 0.13725491)
+
+[node name="comp_hurtbox" type="Area2D" parent="." unique_id=1412067333]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("4_hptil")
+metadata/_custom_type_script = "uid://d1xaxosi0e3l3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hurtbox" unique_id=19718066]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_hptil")
+debug_color = Color(0.04520932, 0.6341294, 0.4231198, 0.41960785)
+
+[node name="dir" type="RayCast2D" parent="." unique_id=457355666]
+position = Vector2(10, 7)
+target_position = Vector2(0, 10)
+hit_from_inside = true
+
+[node name="esq" type="RayCast2D" parent="." unique_id=642842263]
+position = Vector2(-10, 7)
+target_position = Vector2(0, 10)
+hit_from_inside = true

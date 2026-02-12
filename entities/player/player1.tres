@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="controle" format=3 uid="uid://cmm7pyhgsx7og"]
+
+[ext_resource type="Script" uid="uid://n3gn0xiu1pec" path="res://entities/player/controle.gd" id="1_c8xf8"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_c8xf8"]
+action = &"p1_slide"
+
+[sub_resource type="InputEventAction" id="InputEventAction_xw3l1"]
+action = &"p1_pulo"
+
+[sub_resource type="InputEventAction" id="InputEventAction_vgxf7"]
+action = &"p1_direita"
+
+[sub_resource type="InputEventAction" id="InputEventAction_6y31t"]
+action = &"p1_esquerda"
+
+[resource]
+script = ExtResource("1_c8xf8")
+cima = SubResource("InputEventAction_xw3l1")
+baixo = SubResource("InputEventAction_c8xf8")
+direita = SubResource("InputEventAction_vgxf7")
+esquerda = SubResource("InputEventAction_6y31t")
