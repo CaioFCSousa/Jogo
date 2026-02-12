@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://3s6mwmjmremm"]
+
+[node name="Control" type="Control" unique_id=17425414]
+layout_mode = 3
+anchor_top = 0.001
+anchor_right = 0.157
+anchor_bottom = 0.418
+offset_left = 1.0
+offset_top = 0.27999997
+offset_right = 0.039993286
+offset_bottom = 0.039978027
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="carta" type="Button" parent="." unique_id=264481075]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=927320646]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45646775, 0.5587276, 0.3888862, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=1023485335]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.093333334
+anchor_right = 1.0
+anchor_bottom = 0.25333333
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07735207, 0.56739455, 0.7447918, 1)
+metadata/_edit_use_anchors_ = true

@@ -20,9 +20,11 @@ func _ready() -> void:
 	connect("area_entered", _na_area_entrada)
 	connect("area_exited", _na_area_saiu)
 
-func verificar_dano():
-	# futura implementação provalvemnte terei de mecher na "na area entrada"
-	pass
+func _dano_total() ->float:
+	var valor : float
+	for hitbox in hitbox_em_contato:
+		valor += hitbox.dano
+	return valor
 
 # função que verifica quem é hitbox e só aceita se for diferente // pelo visto só é verificado caso seja do tipo hitbox
 func _na_area_entrada(hitbox : comp_hitbox)-> void:
@@ -30,8 +32,6 @@ func _na_area_entrada(hitbox : comp_hitbox)-> void:
 	if hitbox.get_parent() != get_parent():
 		# adicona a hitbox ao array de hitboxs
 		hitbox_em_contato.append(hitbox)
-		# chama o comp de vida para tomar dano
-		vida.tomar_dano(hitbox.dano)
 		
 	atualizar_texto_debug([hitbox.dano, " ", hitbox_em_contato])
 

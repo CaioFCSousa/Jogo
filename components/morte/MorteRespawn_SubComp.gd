@@ -14,16 +14,15 @@ func _ready() -> void:
 	tempo.connect("timeout", aparecer)
 
 func respawnar():
-	print("dono")
+	# print("dono")
 	dono.visible = false
 	dono.set_physics_process(false)
-	dono.set_collision_mask_value(2, false)
 	tempo.start()
 	pass
 
 func aparecer():
 	dono.set_physics_process(true)
-	vida_comp.curar_toda_vida()
-	dono.set_collision_mask_value(2, true)
+	vida_comp._set_imortal(false)
+	vida_comp._curar_toda_vida()
 	dono.visible = true
 	dono.position = local_respawn.position

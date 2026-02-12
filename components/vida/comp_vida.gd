@@ -17,6 +17,7 @@ tomar dano
 @export var dono : CharacterBody2D 
 # vida que vai começar
 @export var vida : float = 100
+@export var morto : bool = false
 
 # max e min que a vida pode antigir
 @export var vida_Maxima : float = 100.0
@@ -40,27 +41,32 @@ func tomar_dano(valor : float):
 		valor = 0
 	
 	# se estiver imortal nn toma dano
-	if !imortal:
+	if !imortal and !morto:
 		_set_vida(vida - valor)
 		tomei_dano.emit()
-		
+		verificar_morto()
 		#debug
-		print("tomei %f de dano, minha vida agora é %f" % [valor, vida])
+		# print("tomei %f de dano, minha vida agora é %f" % [valor, vida])
 	else:
+		pass
 		#debug
-		print("imortal")
+		# print("imortal")
 	
 	# indica aos outros que morreu
-	if vida <= vida_Minima:
-		morreu.emit()
-		print("morri")
+	
 	
 	# indica que a vida mudou sempre que toma dano
 	vida_mudou.emit()
 
-# função de curar a vida
-func curar_toda_vida():
+# metodos
+func _curar_toda_vida():
 	_set_vida(vida_Maxima)
+
+func verificar_morto():
+	if vida <= vida_Minima:
+		morreu.emit()
+		imortal = true
+		# print("morri")
 
 # get and setters
 func _set_vida(valor : float):
@@ -70,6 +76,12 @@ func _set_vida(valor : float):
 
 func _get_vida() -> float:
 	return vida
+
+func _set_morto(valor : bool):
+	morto = valor
+
+func _get_morto()->bool:
+	return morto
 
 func _set_imortal(valor : bool):
 	if valor != imortal:
