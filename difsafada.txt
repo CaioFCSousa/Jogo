@@ -1,0 +1,973 @@
+diff --git a/.gitignore b/.gitignore
+index e93cd59..f70e646 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -2,4 +2,4 @@
+ .godot/
+ /android/
+ project.godot
+-
++*.tmp
+diff --git a/Barra_de_vida.gd b/Barra_de_vida.gd
+new file mode 100644
+index 0000000..b7528cb
+--- /dev/null
++++ b/Barra_de_vida.gd
+@@ -0,0 +1,68 @@
++extends HBoxContainer
++class_name Barra_de_vida
++
++@export var vida_max : int = 5
++@export var vida_atual : int
++@export var textura_vidaCheia : Texture2D
++@export var textura_vidaVazia : Texture2D
++@export var valor_separacao : int = 1
++var coracoes : Array[TextureRect]
++var quantidade_suportada : int
++var vida_passada : int
++
++
++# Called when the node enters the scene tree for the first time.
++func _ready() -> void:
++	vida_atual = clamp(vida_atual,0,vida_max)
++	vida_passada = vida_atual
++	quantidade_suportada = size.x / textura_vidaCheia.get_width()
++	print("%s %s %s %s" % [quantidade_suportada, textura_vidaCheia.get_width(), size.x, quantidade_suportada * textura_vidaCheia.get_width() < size.x])
++	if quantidade_suportada * (textura_vidaCheia.get_width()+valor_separacao) > size.x:
++		print("tamanho da barra pequena demais! ajuste para o tamanho: %d*(%d+%d)=%d" % [vida_max,textura_vidaCheia.get_width(),valor_separacao,vida_max *(valor_separacao + textura_vidaCheia.get_width())])
++	
++	for cora in get_children():
++		coracoes.append(cora)
++	
++	if coracoes.size() < vida_atual:
++		for x in range(coracoes.size(),vida_atual):
++			# print("adciconando mais um coração ", coracoes.size())
++			var novo_coracao = TextureRect.new()
++			novo_coracao.texture = textura_vidaCheia
++			novo_coracao.name = coracoes[0].name +" "+ str(x)
++			coracoes.append(novo_coracao)
++			add_child(novo_coracao)
++		pass
++	
++	atualizar()
++	pass # Replace with function body.
++
++func atualizar():
++	print("vida atual: %d\nvida passada: %d\ndif: %d" % [vida_atual, vida_passada , vida_atual-vida_passada])
++	var dif = clamp(vida_max - vida_atual,0 ,vida_max)
++	
++	if vida_atual - vida_passada >= 1:
++		print("ui")
++		for x in vida_atual:
++			print(coracoes[x])
++			coracoes[x].texture = textura_vidaCheia
++		pass
++	else:
++		for x in dif:
++			coracoes[-(x+1)].texture = textura_vidaVazia
++			pass
++	
++	vida_passada = vida_atual
++
++
++func _on_button_button_down() -> void:
++	vida_atual -= 1
++	vida_atual = clamp(vida_atual, 0, vida_max)
++	atualizar()
++	pass # Replace with function body.
++
++
++func _on_button_2_button_down() -> void:
++	vida_atual += 1
++	vida_atual = clamp(vida_atual, 0, vida_max)
++	atualizar()
++	pass # Replace with function body.
+diff --git a/Barra_de_vida.gd.uid b/Barra_de_vida.gd.uid
+new file mode 100644
+index 0000000..e6087e8
+--- /dev/null
++++ b/Barra_de_vida.gd.uid
+@@ -0,0 +1 @@
++uid://c2riiadf4l5w
+diff --git a/UI_VIDA.gd b/UI_VIDA.gd
+new file mode 100644
+index 0000000..a1d4176
+--- /dev/null
++++ b/UI_VIDA.gd
+@@ -0,0 +1,11 @@
++extends Control
++
++
++# Called when the node enters the scene tree for the first time.
++func _ready() -> void:
++	pass # Replace with function body.
++
++
++# Called every frame. 'delta' is the elapsed time since the previous frame.
++func _process(delta: float) -> void:
++	pass
+diff --git a/UI_VIDA.gd.uid b/UI_VIDA.gd.uid
+new file mode 100644
+index 0000000..542fed9
+--- /dev/null
++++ b/UI_VIDA.gd.uid
+@@ -0,0 +1 @@
++uid://bsa7dltw0ben8
+diff --git a/assets/atlas/atlas_coracao.tres b/assets/atlas/atlas_coracao.tres
+new file mode 100644
+index 0000000..35fb6f5
+--- /dev/null
++++ b/assets/atlas/atlas_coracao.tres
+@@ -0,0 +1,7 @@
++[gd_resource type="AtlasTexture" format=3 uid="uid://dc1tq4wa0wfxt"]
++
++[ext_resource type="Texture2D" uid="uid://colssvgpgyik4" path="res://assets/atlas/coracoes_atlas.png" id="1_suk3u"]
++
++[resource]
++atlas = ExtResource("1_suk3u")
++region = Rect2(16, 0, 16, 16)
+diff --git a/assets/atlas/coracoes_atlas.png b/assets/atlas/coracoes_atlas.png
+new file mode 100644
+index 0000000..fbabd2a
+Binary files /dev/null and b/assets/atlas/coracoes_atlas.png differ
+diff --git a/assets/atlas/coracoes_atlas.png.import b/assets/atlas/coracoes_atlas.png.import
+new file mode 100644
+index 0000000..e059ea2
+--- /dev/null
++++ b/assets/atlas/coracoes_atlas.png.import
+@@ -0,0 +1,40 @@
++[remap]
++
++importer="texture"
++type="CompressedTexture2D"
++uid="uid://colssvgpgyik4"
++path="res://.godot/imported/coracoes_atlas.png-2a6c2e6ce2c300a3d66661a97897b869.ctex"
++metadata={
++"vram_texture": false
++}
++
++[deps]
++
++source_file="res://assets/atlas/coracoes_atlas.png"
++dest_files=["res://.godot/imported/coracoes_atlas.png-2a6c2e6ce2c300a3d66661a97897b869.ctex"]
++
++[params]
++
++compress/mode=0
++compress/high_quality=false
++compress/lossy_quality=0.7
++compress/uastc_level=0
++compress/rdo_quality_loss=0.0
++compress/hdr_compression=1
++compress/normal_map=0
++compress/channel_pack=0
++mipmaps/generate=false
++mipmaps/limit=-1
++roughness/mode=0
++roughness/src_normal=""
++process/channel_remap/red=0
++process/channel_remap/green=1
++process/channel_remap/blue=2
++process/channel_remap/alpha=3
++process/fix_alpha_border=true
++process/premult_alpha=false
++process/normal_map_invert_y=false
++process/hdr_as_srgb=false
++process/hdr_clamp_exposure=false
++process/size_limit=0
++detect_3d/compress_to=1
+diff --git "a/assets/sprites/cora\303\247\303\243o.kra" "b/assets/sprites/cora\303\247\303\243o.kra"
+new file mode 100644
+index 0000000..ae4ea6b
+Binary files /dev/null and "b/assets/sprites/cora\303\247\303\243o.kra" differ
+diff --git "a/assets/sprites/cora\303\247\303\243o.png" "b/assets/sprites/cora\303\247\303\243o.png"
+new file mode 100644
+index 0000000..3b2fb17
+Binary files /dev/null and "b/assets/sprites/cora\303\247\303\243o.png" differ
+diff --git "a/assets/sprites/cora\303\247\303\243o.png.import" "b/assets/sprites/cora\303\247\303\243o.png.import"
+new file mode 100644
+index 0000000..6fcffae
+--- /dev/null
++++ "b/assets/sprites/cora\303\247\303\243o.png.import"
+@@ -0,0 +1,40 @@
++[remap]
++
++importer="texture"
++type="CompressedTexture2D"
++uid="uid://snv2pww02yd4"
++path="res://.godot/imported/coração.png-50ae86038287a5c91d636b2b4d2e29d2.ctex"
++metadata={
++"vram_texture": false
++}
++
++[deps]
++
++source_file="res://assets/sprites/coração.png"
++dest_files=["res://.godot/imported/coração.png-50ae86038287a5c91d636b2b4d2e29d2.ctex"]
++
++[params]
++
++compress/mode=0
++compress/high_quality=false
++compress/lossy_quality=0.7
++compress/uastc_level=0
++compress/rdo_quality_loss=0.0
++compress/hdr_compression=1
++compress/normal_map=0
++compress/channel_pack=0
++mipmaps/generate=false
++mipmaps/limit=-1
++roughness/mode=0
++roughness/src_normal=""
++process/channel_remap/red=0
++process/channel_remap/green=1
++process/channel_remap/blue=2
++process/channel_remap/alpha=3
++process/fix_alpha_border=true
++process/premult_alpha=false
++process/normal_map_invert_y=false
++process/hdr_as_srgb=false
++process/hdr_clamp_exposure=false
++process/size_limit=0
++detect_3d/compress_to=1
+diff --git "a/assets/sprites/cora\303\247\303\243o.png~" "b/assets/sprites/cora\303\247\303\243o.png~"
+new file mode 100644
+index 0000000..7ce6f41
+Binary files /dev/null and "b/assets/sprites/cora\303\247\303\243o.png~" differ
+diff --git a/assets/sprites/dasdasasd.png b/assets/sprites/dasdasasd.png
+new file mode 100644
+index 0000000..f924372
+Binary files /dev/null and b/assets/sprites/dasdasasd.png differ
+diff --git a/assets/sprites/dasdasasd.png.import b/assets/sprites/dasdasasd.png.import
+new file mode 100644
+index 0000000..738960f
+--- /dev/null
++++ b/assets/sprites/dasdasasd.png.import
+@@ -0,0 +1,40 @@
++[remap]
++
++importer="texture"
++type="CompressedTexture2D"
++uid="uid://c8e62vshmra3a"
++path="res://.godot/imported/dasdasasd.png-beeea1ebb1715aa3bbab9cad3b52ce4c.ctex"
++metadata={
++"vram_texture": false
++}
++
++[deps]
++
++source_file="res://assets/sprites/dasdasasd.png"
++dest_files=["res://.godot/imported/dasdasasd.png-beeea1ebb1715aa3bbab9cad3b52ce4c.ctex"]
++
++[params]
++
++compress/mode=0
++compress/high_quality=false
++compress/lossy_quality=0.7
++compress/uastc_level=0
++compress/rdo_quality_loss=0.0
++compress/hdr_compression=1
++compress/normal_map=0
++compress/channel_pack=0
++mipmaps/generate=false
++mipmaps/limit=-1
++roughness/mode=0
++roughness/src_normal=""
++process/channel_remap/red=0
++process/channel_remap/green=1
++process/channel_remap/blue=2
++process/channel_remap/alpha=3
++process/fix_alpha_border=true
++process/premult_alpha=false
++process/normal_map_invert_y=false
++process/hdr_as_srgb=false
++process/hdr_clamp_exposure=false
++process/size_limit=0
++detect_3d/compress_to=1
+diff --git a/assets/sprites/sdads.png b/assets/sprites/sdads.png
+new file mode 100644
+index 0000000..28cf849
+Binary files /dev/null and b/assets/sprites/sdads.png differ
+diff --git a/assets/sprites/sdads.png.import b/assets/sprites/sdads.png.import
+new file mode 100644
+index 0000000..44cb000
+--- /dev/null
++++ b/assets/sprites/sdads.png.import
+@@ -0,0 +1,40 @@
++[remap]
++
++importer="texture"
++type="CompressedTexture2D"
++uid="uid://c3g37hh06lypx"
++path="res://.godot/imported/sdads.png-63c1414ff73270fea5b8ef9dfdbe22d1.ctex"
++metadata={
++"vram_texture": false
++}
++
++[deps]
++
++source_file="res://assets/sprites/sdads.png"
++dest_files=["res://.godot/imported/sdads.png-63c1414ff73270fea5b8ef9dfdbe22d1.ctex"]
++
++[params]
++
++compress/mode=0
++compress/high_quality=false
++compress/lossy_quality=0.7
++compress/uastc_level=0
++compress/rdo_quality_loss=0.0
++compress/hdr_compression=1
++compress/normal_map=0
++compress/channel_pack=0
++mipmaps/generate=false
++mipmaps/limit=-1
++roughness/mode=0
++roughness/src_normal=""
++process/channel_remap/red=0
++process/channel_remap/green=1
++process/channel_remap/blue=2
++process/channel_remap/alpha=3
++process/fix_alpha_border=true
++process/premult_alpha=false
++process/normal_map_invert_y=false
++process/hdr_as_srgb=false
++process/hdr_clamp_exposure=false
++process/size_limit=0
++detect_3d/compress_to=1
+diff --git a/components/vida/comp_vida.gd b/components/vida/comp_vida.gd
+index 3e2124f..0132301 100644
+--- a/components/vida/comp_vida.gd
++++ b/components/vida/comp_vida.gd
+@@ -17,7 +17,7 @@ tomar dano
+ @export var dono : CharacterBody2D 
+ # vida que vai começar
+ @export var vida : float = 100
+-@export var morto : bool = false
++@export var ta_morto : bool = false
+ 
+ # max e min que a vida pode antigir
+ @export var vida_Maxima : float = 100.0
+@@ -41,28 +41,23 @@ func tomar_dano(valor : float):
+ 		valor = 0
+ 	
+ 	# se estiver imortal nn toma dano
+-	if !imortal and !morto:
++	if !imortal and !ta_morto:
+ 		_set_vida(vida - valor)
++		verificar_morte()
++		vida_mudou.emit()
+ 		tomei_dano.emit()
+-		verificar_morto()
+ 		#debug
+ 		# print("tomei %f de dano, minha vida agora é %f" % [valor, vida])
+ 	else:
+ 		pass
+ 		#debug
+ 		# print("imortal")
+-	
+-	# indica aos outros que morreu
+-	
+-	
+-	# indica que a vida mudou sempre que toma dano
+-	vida_mudou.emit()
+ 
+ # metodos
+ func _curar_toda_vida():
+ 	_set_vida(vida_Maxima)
+ 
+-func verificar_morto():
++func verificar_morte():
+ 	if vida <= vida_Minima:
+ 		morreu.emit()
+ 		imortal = true
+@@ -78,10 +73,10 @@ func _get_vida() -> float:
+ 	return vida
+ 
+ func _set_morto(valor : bool):
+-	morto = valor
++	ta_morto = valor
+ 
+ func _get_morto()->bool:
+-	return morto
++	return ta_morto
+ 
+ func _set_imortal(valor : bool):
+ 	if valor != imortal:
+diff --git a/coracao.gd b/coracao.gd
+new file mode 100644
+index 0000000..9f6ac00
+--- /dev/null
++++ b/coracao.gd
+@@ -0,0 +1 @@
++extends TextureRect
+diff --git a/coracao.gd.uid b/coracao.gd.uid
+new file mode 100644
+index 0000000..fbabbf1
+--- /dev/null
++++ b/coracao.gd.uid
+@@ -0,0 +1 @@
++uid://co78hii0g76ob
+diff --git a/coracao_separado.gd b/coracao_separado.gd
+new file mode 100644
+index 0000000..9f6ac00
+--- /dev/null
++++ b/coracao_separado.gd
+@@ -0,0 +1 @@
++extends TextureRect
+diff --git a/coracao_separado.gd.uid b/coracao_separado.gd.uid
+new file mode 100644
+index 0000000..417bd77
+--- /dev/null
++++ b/coracao_separado.gd.uid
+@@ -0,0 +1 @@
++uid://cqieys2ufwym1
+diff --git a/entities/inimigos/congumelo.gd b/entities/inimigos/congumelo.gd
+index b32d615..b4e09d9 100644
+--- a/entities/inimigos/congumelo.gd
++++ b/entities/inimigos/congumelo.gd
+@@ -1,6 +1 @@
+ extends CharacterBody2D
+-
+-@onready var colison : Array[RayCast2D] = [$dir, $esq]
+-
+-func _ready() -> void:
+-	print(colison[0], colison[1])
+diff --git a/entities/inimigos/congumelo.tscn b/entities/inimigos/congumelo.tscn
+index bca303a..6a5b133 100644
+--- a/entities/inimigos/congumelo.tscn
++++ b/entities/inimigos/congumelo.tscn
+@@ -1,10 +1,10 @@
+ [gd_scene format=3 uid="uid://sdpdjhcrgl2"]
+ 
+ [ext_resource type="Script" uid="uid://dhfcwatgskugc" path="res://entities/inimigos/congumelo.gd" id="1_gcc27"]
+-[ext_resource type="SpriteFrames" uid="uid://c00h56v44hgep" path="res://entities/inimigos/congumelo.tres" id="1_l8ejs"]
+ [ext_resource type="Script" uid="uid://pu7qmxn02b2v" path="res://components/vida/comp_vida.gd" id="1_nmqgl"]
+ [ext_resource type="Script" uid="uid://bhet3qwx8rvta" path="res://components/hitbox/comp_hitbox.gd" id="3_gcc27"]
+ [ext_resource type="Script" uid="uid://c77k71sdkseuk" path="res://components/hitbox/comp_hurtbox.gd" id="4_hptil"]
++[ext_resource type="Texture2D" uid="uid://brv2vrdfrglf" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/mushroom/mushroom_spritesheet.png" id="5_l8ejs"]
+ 
+ [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l8ejs"]
+ radius = 6.0
+@@ -16,29 +16,230 @@ size = Vector2(20, 14)
+ [sub_resource type="RectangleShape2D" id="RectangleShape2D_hptil"]
+ size = Vector2(14, 10)
+ 
++[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l8ejs"]
++animation = &"andar"
++
++[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gcc27"]
++animation = &"dormir"
++
++[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g82xw"]
++animation = &"enterrar"
++
++[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hptil"]
++animation = &"levantar"
++
++[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_whtri"]
++advance_mode = 2
++
++[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g82xw"]
++break_loop_at_end = true
++switch_mode = 2
++advance_mode = 2
++advance_condition = &"acordado"
++
++[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jqrdw"]
++switch_mode = 2
++advance_mode = 2
++advance_condition = &"acordado"
++
++[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_10d01"]
++break_loop_at_end = true
++advance_mode = 2
++advance_condition = &"dormindo"
++
++[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n7oo1"]
++break_loop_at_end = true
++switch_mode = 2
++advance_mode = 2
++advance_condition = &"dormindo"
++
++[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l8ejs"]
++advance_mode = 2
++
++[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jqrdw"]
++states/End/position = Vector2(883, 218)
++states/Start/position = Vector2(192, 218)
++states/andar/node = SubResource("AnimationNodeAnimation_l8ejs")
++states/andar/position = Vector2(688, 218)
++states/dormir/node = SubResource("AnimationNodeAnimation_gcc27")
++states/dormir/position = Vector2(386, 218)
++states/enterrar/node = SubResource("AnimationNodeAnimation_g82xw")
++states/enterrar/position = Vector2(536, 267)
++states/levantar/node = SubResource("AnimationNodeAnimation_hptil")
++states/levantar/position = Vector2(536, 133)
++transitions = ["Start", "dormir", SubResource("AnimationNodeStateMachineTransition_whtri"), "dormir", "levantar", SubResource("AnimationNodeStateMachineTransition_g82xw"), "levantar", "andar", SubResource("AnimationNodeStateMachineTransition_jqrdw"), "andar", "enterrar", SubResource("AnimationNodeStateMachineTransition_10d01"), "enterrar", "dormir", SubResource("AnimationNodeStateMachineTransition_n7oo1"), "andar", "End", SubResource("AnimationNodeStateMachineTransition_l8ejs")]
++graph_offset = Vector2(29, 59)
++
++[sub_resource type="Animation" id="Animation_10d01"]
++length = 0.001
++tracks/0/type = "value"
++tracks/0/imported = false
++tracks/0/enabled = true
++tracks/0/path = NodePath("Sprite2D:frame")
++tracks/0/interp = 1
++tracks/0/loop_wrap = true
++tracks/0/keys = {
++"times": PackedFloat32Array(0),
++"transitions": PackedFloat32Array(1),
++"update": 1,
++"values": [0]
++}
++tracks/1/type = "value"
++tracks/1/imported = false
++tracks/1/enabled = true
++tracks/1/path = NodePath("Sprite2D:scale:x")
++tracks/1/interp = 1
++tracks/1/loop_wrap = true
++tracks/1/keys = {
++"times": PackedFloat32Array(0),
++"transitions": PackedFloat32Array(1),
++"update": 1,
++"values": [1.0]
++}
++
++[sub_resource type="Animation" id="Animation_n7oo1"]
++resource_name = "andar"
++loop_mode = 1
++step = 0.125
++tracks/0/type = "value"
++tracks/0/imported = false
++tracks/0/enabled = true
++tracks/0/path = NodePath("Sprite2D:frame")
++tracks/0/interp = 1
++tracks/0/loop_wrap = true
++tracks/0/keys = {
++"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
++"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
++"update": 1,
++"values": [0, 1, 2, 3, 4, 5, 6, 7]
++}
++
++[sub_resource type="Animation" id="Animation_otpuh"]
++resource_name = "dormir"
++length = 2.0000124
++loop_mode = 1
++step = 0.125
++tracks/0/type = "value"
++tracks/0/imported = false
++tracks/0/enabled = true
++tracks/0/path = NodePath("Sprite2D:frame")
++tracks/0/interp = 1
++tracks/0/loop_wrap = true
++tracks/0/keys = {
++"times": PackedFloat32Array(0),
++"transitions": PackedFloat32Array(1),
++"update": 1,
++"values": [10]
++}
++tracks/1/type = "value"
++tracks/1/imported = false
++tracks/1/enabled = true
++tracks/1/path = NodePath("Sprite2D:scale:x")
++tracks/1/interp = 1
++tracks/1/loop_wrap = true
++tracks/1/keys = {
++"times": PackedFloat32Array(0, 1, 2),
++"transitions": PackedFloat32Array(1, 1, 1),
++"update": 0,
++"values": [1.0, 1.05, 1.0]
++}
++
++[sub_resource type="Animation" id="Animation_goqhm"]
++resource_name = "enterrar"
++loop_mode = 1
++step = 0.125
++tracks/0/type = "value"
++tracks/0/imported = false
++tracks/0/enabled = true
++tracks/0/path = NodePath("Sprite2D:frame")
++tracks/0/interp = 1
++tracks/0/loop_wrap = true
++tracks/0/keys = {
++"times": PackedFloat32Array(0, 0.375, 0.625),
++"transitions": PackedFloat32Array(1, 1, 1),
++"update": 1,
++"values": [13, 12, 10]
++}
++
++[sub_resource type="Animation" id="Animation_856u7"]
++resource_name = "levantar"
++length = 0.875
++step = 0.125
++tracks/0/type = "value"
++tracks/0/imported = false
++tracks/0/enabled = true
++tracks/0/path = NodePath("Sprite2D:frame")
++tracks/0/interp = 1
++tracks/0/loop_wrap = true
++tracks/0/keys = {
++"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
++"transitions": PackedFloat32Array(1, 1, 1, 1),
++"update": 1,
++"values": [11, 12, 13, 0]
++}
++
++[sub_resource type="Animation" id="Animation_ts5d7"]
++resource_name = "Levar_dano"
++length = 0.625
++tracks/0/type = "value"
++tracks/0/imported = false
++tracks/0/enabled = true
++tracks/0/path = NodePath("Sprite2D:frame")
++tracks/0/interp = 1
++tracks/0/loop_wrap = true
++tracks/0/keys = {
++"times": PackedFloat32Array(0, 0.13333334, 0.26666668),
++"transitions": PackedFloat32Array(1, 1, 1),
++"update": 1,
++"values": [24, 25, 26]
++}
++
++[sub_resource type="Animation" id="Animation_lfn0f"]
++resource_name = "levar_dano"
++length = 1.375
++step = 0.125
++tracks/0/type = "value"
++tracks/0/imported = false
++tracks/0/enabled = true
++tracks/0/path = NodePath("Sprite2D:frame")
++tracks/0/interp = 1
++tracks/0/loop_wrap = true
++tracks/0/keys = {
++"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25),
++"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
++"update": 1,
++"values": [16, 17, 18, 19, 20, 21]
++}
++
++[sub_resource type="AnimationLibrary" id="AnimationLibrary_goqhm"]
++_data = {
++&"RESET": SubResource("Animation_10d01"),
++&"andar": SubResource("Animation_n7oo1"),
++&"dormir": SubResource("Animation_otpuh"),
++&"enterrar": SubResource("Animation_goqhm"),
++&"levantar": SubResource("Animation_856u7"),
++&"levar_dano": SubResource("Animation_ts5d7"),
++&"morrer": SubResource("Animation_lfn0f")
++}
++
+ [node name="Node2D" type="CharacterBody2D" unique_id=833525537]
+ collision_layer = 4
+ collision_mask = 3
+ script = ExtResource("1_gcc27")
+ 
+-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1176920456]
+-sprite_frames = ExtResource("1_l8ejs")
+-animation = &"idle"
+-
+ [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1716548450]
+ shape = SubResource("CapsuleShape2D_l8ejs")
+ 
+-[node name="Vida_Comp" type="Node" parent="." unique_id=542514996]
++[node name="Vida_Comp" type="Node" parent="." unique_id=542514996 node_paths=PackedStringArray("dono")]
+ script = ExtResource("1_nmqgl")
++dono = NodePath("..")
+ vida = 3.0
+ vida_Maxima = 3.0
+-metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
+ 
+ [node name="comp_hitbox" type="Area2D" parent="." unique_id=1985880423]
+ collision_layer = 16
+ collision_mask = 2
+ script = ExtResource("3_gcc27")
+-metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
+ 
+ [node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hitbox" unique_id=1553684161]
+ shape = SubResource("RectangleShape2D_gcc27")
+@@ -48,7 +249,6 @@ debug_color = Color(0.99, 0, 0, 0.13725491)
+ collision_layer = 4
+ collision_mask = 16
+ script = ExtResource("4_hptil")
+-metadata/_custom_type_script = "uid://d1xaxosi0e3l3"
+ 
+ [node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hurtbox" unique_id=19718066]
+ position = Vector2(0, -3)
+@@ -64,3 +264,17 @@ hit_from_inside = true
+ position = Vector2(-10, 7)
+ target_position = Vector2(0, 10)
+ hit_from_inside = true
++
++[node name="Sprite2D" type="Sprite2D" parent="." unique_id=423069255]
++texture = ExtResource("5_l8ejs")
++hframes = 8
++vframes = 4
++
++[node name="AnimationTree" type="AnimationTree" parent="." unique_id=377350324]
++tree_root = SubResource("AnimationNodeStateMachine_jqrdw")
++anim_player = NodePath("../AnimationPlayer")
++parameters/conditions/acordado = true
++parameters/conditions/dormindo = false
++
++[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=918351695]
++libraries/ = SubResource("AnimationLibrary_goqhm")
+diff --git a/levels/teste_inimigos.tscn b/levels/teste_inimigos.tscn
+index 730ab2b..898fad3 100644
+--- a/levels/teste_inimigos.tscn
++++ b/levels/teste_inimigos.tscn
+@@ -50,7 +50,7 @@ alvo1 = NodePath("../Player")
+ alvo2 = NodePath("../Player2")
+ exibir_alvo = false
+ zoomLonge = 0.0
+-aumentoDoZoom = 1200
++aumentoDoZoom = 950
+ 
+ [node name="cnagamelo" parent="." unique_id=833525537 instance=ExtResource("4_lf6mt")]
+ position = Vector2(-238, 217)
+diff --git a/project.godot b/project.godot
+index 687bd7b..b5047d9 100644
+--- a/project.godot
++++ b/project.godot
+@@ -11,15 +11,10 @@ config_version=5
+ [application]
+ 
+ config/name="Teste jogo legal"
+-run/main_scene="uid://sadih2j8jbsk"
++run/main_scene="uid://bx5v5u1cxxl31"
+ config/features=PackedStringArray("4.6", "Mobile")
+ <<<<<<<HEADrun/main_scene="res://Cena_Teste.tscn"
+ 
+-[display]
+-
+-window/size/viewport_width=1920
+-window/size/viewport_height=1080
+-
+ [input]
+ 
+ ui_left={
+diff --git a/teste_ui.gd b/teste_ui.gd
+new file mode 100644
+index 0000000..f683ae2
+--- /dev/null
++++ b/teste_ui.gd
+@@ -0,0 +1,17 @@
++extends Control
++
++@export var barra_vida : HBoxContainer
++var coracao_base : TextureRect
++@export var coracao_cheio : Texture2D
++@export var coracao_vazio : Texture2D
++
++var 
++
++@export var vida_max : int
++@export var vida : int
++
++func _ready() -> void:
++	coracao_base = barra_vida.get_child(0)
++	for i in range(vida_max):
++		
++	pass
+diff --git a/teste_ui.gd.uid b/teste_ui.gd.uid
+new file mode 100644
+index 0000000..77f3a6a
+--- /dev/null
++++ b/teste_ui.gd.uid
+@@ -0,0 +1 @@
++uid://dm3324af3u6jx
+diff --git a/ui.tscn b/ui.tscn
+new file mode 100644
+index 0000000..ef7a909
+--- /dev/null
++++ b/ui.tscn
+@@ -0,0 +1,139 @@
++[gd_scene format=3 uid="uid://bx5v5u1cxxl31"]
++
++[ext_resource type="Texture2D" uid="uid://des7042xmc3cs" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/lifes_icon.png" id="3_ok7cu"]
++[ext_resource type="Texture2D" uid="uid://vpr1r1qkswaq" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/health_hud_left.png" id="4_irxef"]
++[ext_resource type="Texture2D" uid="uid://ct2jd7tj2y7wo" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/health_hud_middle.png" id="5_e2l4f"]
++[ext_resource type="Script" uid="uid://c2riiadf4l5w" path="res://Barra_de_vida.gd" id="5_n5ude"]
++[ext_resource type="Texture2D" uid="uid://ba4b2ud55u4gh" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/health_hud_right.png" id="6_n5rqp"]
++[ext_resource type="Texture2D" uid="uid://dc1tq4wa0wfxt" path="res://assets/atlas/atlas_coracao.tres" id="6_waa4j"]
++[ext_resource type="Texture2D" uid="uid://colssvgpgyik4" path="res://assets/atlas/coracoes_atlas.png" id="6_y4yjw"]
++
++[sub_resource type="AtlasTexture" id="AtlasTexture_waa4j"]
++atlas = ExtResource("6_y4yjw")
++region = Rect2(0, 0, 16, 16)
++
++[sub_resource type="AtlasTexture" id="AtlasTexture_ok7cu"]
++atlas = ExtResource("6_y4yjw")
++region = Rect2(0, 0, 16, 16)
++
++[node name="Control" type="Control" unique_id=716708910]
++layout_mode = 3
++anchors_preset = 0
++
++[node name="Panel" type="Panel" parent="." unique_id=609011593]
++custom_minimum_size = Vector2(0, 80)
++layout_mode = 1
++offset_right = 240.0
++offset_bottom = 49.0
++
++[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=4683712]
++layout_mode = 1
++anchors_preset = 15
++anchor_right = 1.0
++anchor_bottom = 1.0
++offset_right = -10.0
++grow_horizontal = 2
++grow_vertical = 2
++
++[node name="Panel" type="Panel" parent="Panel/HBoxContainer" unique_id=1968840634]
++clip_contents = true
++custom_minimum_size = Vector2(16, 16)
++layout_mode = 2
++size_flags_horizontal = 3
++size_flags_stretch_ratio = 0.4
++
++[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/Panel" unique_id=1469703691]
++layout_mode = 1
++anchors_preset = 15
++anchor_right = 1.0
++anchor_bottom = 1.0
++grow_horizontal = 2
++grow_vertical = 2
++theme_override_constants/margin_left = 2
++theme_override_constants/margin_top = 2
++theme_override_constants/margin_right = 2
++theme_override_constants/margin_bottom = 2
++
++[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Panel/MarginContainer" unique_id=1361251526]
++custom_minimum_size = Vector2(16, 16)
++layout_mode = 2
++texture = ExtResource("3_ok7cu")
++stretch_mode = 5
++
++[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1663898559]
++layout_mode = 2
++size_flags_horizontal = 3
++
++[node name="Panel" type="Panel" parent="Panel/HBoxContainer/VBoxContainer" unique_id=1835096511]
++custom_minimum_size = Vector2(0, 48)
++layout_mode = 2
++size_flags_vertical = 3
++
++[node name="Control" type="Control" parent="Panel/HBoxContainer/VBoxContainer/Panel" unique_id=613788204]
++anchors_preset = 0
++scale = Vector2(3, 3)
++
++[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control" unique_id=1954552305]
++layout_mode = 0
++offset_left = 3.6666667
++offset_top = 4.0
++offset_right = 93.666664
++offset_bottom = 20.0
++scale = Vector2(0.5, 0.5)
++theme_override_constants/separation = 2
++script = ExtResource("5_n5ude")
++vida_atual = 5
++textura_vidaCheia = SubResource("AtlasTexture_waa4j")
++textura_vidaVazia = ExtResource("6_waa4j")
++valor_separacao = 2
++
++[node name="coracao" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer2" unique_id=1510314356]
++layout_mode = 2
++texture = SubResource("AtlasTexture_ok7cu")
++
++[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control" unique_id=1660663614]
++layout_mode = 1
++offset_right = 53.0
++offset_bottom = 16.0
++theme_override_constants/separation = 0
++alignment = 1
++
++[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer" unique_id=96072349]
++layout_mode = 2
++texture = ExtResource("4_irxef")
++stretch_mode = 3
++
++[node name="TextureRect2" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer" unique_id=219737272]
++layout_mode = 2
++size_flags_horizontal = 3
++texture = ExtResource("5_e2l4f")
++expand_mode = 3
++stretch_mode = 1
++
++[node name="TextureRect3" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer" unique_id=1159024238]
++layout_mode = 2
++texture = ExtResource("6_n5rqp")
++stretch_mode = 3
++
++[node name="Panel2" type="Panel" parent="Panel/HBoxContainer/VBoxContainer" unique_id=863111325]
++custom_minimum_size = Vector2(0, 20)
++layout_mode = 2
++size_flags_vertical = 3
++
++[node name="Button" type="Button" parent="." unique_id=831717153]
++layout_mode = 0
++offset_left = 274.0
++offset_top = 37.0
++offset_right = 313.0
++offset_bottom = 74.0
++text = "-"
++
++[node name="Button2" type="Button" parent="." unique_id=2017090610]
++layout_mode = 0
++offset_left = 274.0
++offset_right = 313.0
++offset_bottom = 37.0
++text = "+"
++
++[connection signal="button_down" from="Button" to="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer2" method="_on_button_button_down"]
++[connection signal="button_down" from="Button2" to="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer2" method="_on_button_2_button_down"]
+diff --git a/ui/vida_ui/health_hud_middle.png b/ui/vida_ui/health_hud_middle.png
+new file mode 100644
+index 0000000..4f42b2d
+Binary files /dev/null and b/ui/vida_ui/health_hud_middle.png differ
+diff --git a/ui/vida_ui/health_hud_middle.png.import b/ui/vida_ui/health_hud_middle.png.import
+new file mode 100644
+index 0000000..60e9d83
+--- /dev/null
++++ b/ui/vida_ui/health_hud_middle.png.import
+@@ -0,0 +1,40 @@
++[remap]
++
++importer="texture"
++type="CompressedTexture2D"
++uid="uid://3tjr7sgbb65l"
++path="res://.godot/imported/health_hud_middle.png-3b426d07e100e74da0d90327c672058b.ctex"
++metadata={
++"vram_texture": false
++}
++
++[deps]
++
++source_file="res://ui/vida_ui/health_hud_middle.png"
++dest_files=["res://.godot/imported/health_hud_middle.png-3b426d07e100e74da0d90327c672058b.ctex"]
++
++[params]
++
++compress/mode=0
++compress/high_quality=false
++compress/lossy_quality=0.7
++compress/uastc_level=0
++compress/rdo_quality_loss=0.0
++compress/hdr_compression=1
++compress/normal_map=0
++compress/channel_pack=0
++mipmaps/generate=false
++mipmaps/limit=-1
++roughness/mode=0
++roughness/src_normal=""
++process/channel_remap/red=0
++process/channel_remap/green=1
++process/channel_remap/blue=2
++process/channel_remap/alpha=3
++process/fix_alpha_border=true
++process/premult_alpha=false
++process/normal_map_invert_y=false
++process/hdr_as_srgb=false
++process/hdr_clamp_exposure=false
++process/size_limit=0
++detect_3d/compress_to=1

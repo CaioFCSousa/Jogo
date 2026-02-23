@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://bx5v5u1cxxl31"]
+
+[ext_resource type="Texture2D" uid="uid://des7042xmc3cs" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/lifes_icon.png" id="3_ok7cu"]
+[ext_resource type="Texture2D" uid="uid://vpr1r1qkswaq" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/health_hud_left.png" id="4_irxef"]
+[ext_resource type="Texture2D" uid="uid://ct2jd7tj2y7wo" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/health_hud_middle.png" id="5_e2l4f"]
+[ext_resource type="Script" uid="uid://c2riiadf4l5w" path="res://Barra_de_vida.gd" id="5_n5ude"]
+[ext_resource type="Texture2D" uid="uid://ba4b2ud55u4gh" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/health_hud_right.png" id="6_n5rqp"]
+[ext_resource type="Texture2D" uid="uid://dc1tq4wa0wfxt" path="res://assets/atlas/atlas_coracao.tres" id="6_waa4j"]
+[ext_resource type="Texture2D" uid="uid://colssvgpgyik4" path="res://assets/atlas/coracoes_atlas.png" id="6_y4yjw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waa4j"]
+atlas = ExtResource("6_y4yjw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok7cu"]
+atlas = ExtResource("6_y4yjw")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Control" type="Control" unique_id=716708910]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="." unique_id=609011593]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+offset_right = 240.0
+offset_bottom = 49.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=4683712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer" unique_id=1968840634]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/Panel" unique_id=1469703691]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Panel/MarginContainer" unique_id=1361251526]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("3_ok7cu")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1663898559]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer/VBoxContainer" unique_id=1835096511]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="Panel/HBoxContainer/VBoxContainer/Panel" unique_id=613788204]
+anchors_preset = 0
+scale = Vector2(3, 3)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control" unique_id=1954552305]
+layout_mode = 0
+offset_left = 3.6666667
+offset_top = 4.0
+offset_right = 93.666664
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 2
+script = ExtResource("5_n5ude")
+vida_atual = 5
+textura_vidaCheia = SubResource("AtlasTexture_waa4j")
+textura_vidaVazia = ExtResource("6_waa4j")
+valor_separacao = 2
+
+[node name="coracao" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer2" unique_id=1510314356]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ok7cu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control" unique_id=1660663614]
+layout_mode = 1
+offset_right = 53.0
+offset_bottom = 16.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer" unique_id=96072349]
+layout_mode = 2
+texture = ExtResource("4_irxef")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer" unique_id=219737272]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_e2l4f")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer" unique_id=1159024238]
+layout_mode = 2
+texture = ExtResource("6_n5rqp")
+stretch_mode = 3
+
+[node name="Panel2" type="Panel" parent="Panel/HBoxContainer/VBoxContainer" unique_id=863111325]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="." unique_id=831717153]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 37.0
+offset_right = 313.0
+offset_bottom = 74.0
+text = "-"
+
+[node name="Button2" type="Button" parent="." unique_id=2017090610]
+layout_mode = 0
+offset_left = 274.0
+offset_right = 313.0
+offset_bottom = 37.0
+text = "+"
+
+[connection signal="button_down" from="Button" to="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer2" method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="Panel/HBoxContainer/VBoxContainer/Panel/Control/HBoxContainer2" method="_on_button_2_button_down"]

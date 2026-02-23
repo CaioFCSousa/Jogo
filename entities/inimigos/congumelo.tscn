@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://sdpdjhcrgl2"]
 
 [ext_resource type="Script" uid="uid://dhfcwatgskugc" path="res://entities/inimigos/congumelo.gd" id="1_gcc27"]
-[ext_resource type="SpriteFrames" uid="uid://c00h56v44hgep" path="res://entities/inimigos/congumelo.tres" id="1_l8ejs"]
 [ext_resource type="Script" uid="uid://pu7qmxn02b2v" path="res://components/vida/comp_vida.gd" id="1_nmqgl"]
 [ext_resource type="Script" uid="uid://bhet3qwx8rvta" path="res://components/hitbox/comp_hitbox.gd" id="3_gcc27"]
 [ext_resource type="Script" uid="uid://c77k71sdkseuk" path="res://components/hitbox/comp_hurtbox.gd" id="4_hptil"]
+[ext_resource type="Texture2D" uid="uid://brv2vrdfrglf" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/mushroom/mushroom_spritesheet.png" id="5_l8ejs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l8ejs"]
 radius = 6.0
@@ -16,29 +16,230 @@ size = Vector2(20, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hptil"]
 size = Vector2(14, 10)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l8ejs"]
+animation = &"andar"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gcc27"]
+animation = &"dormir"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g82xw"]
+animation = &"enterrar"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hptil"]
+animation = &"levantar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_whtri"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g82xw"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"acordado"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jqrdw"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"acordado"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_10d01"]
+break_loop_at_end = true
+advance_mode = 2
+advance_condition = &"dormindo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n7oo1"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"dormindo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l8ejs"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jqrdw"]
+states/End/position = Vector2(883, 218)
+states/Start/position = Vector2(192, 218)
+states/andar/node = SubResource("AnimationNodeAnimation_l8ejs")
+states/andar/position = Vector2(688, 218)
+states/dormir/node = SubResource("AnimationNodeAnimation_gcc27")
+states/dormir/position = Vector2(386, 218)
+states/enterrar/node = SubResource("AnimationNodeAnimation_g82xw")
+states/enterrar/position = Vector2(536, 267)
+states/levantar/node = SubResource("AnimationNodeAnimation_hptil")
+states/levantar/position = Vector2(536, 133)
+transitions = ["Start", "dormir", SubResource("AnimationNodeStateMachineTransition_whtri"), "dormir", "levantar", SubResource("AnimationNodeStateMachineTransition_g82xw"), "levantar", "andar", SubResource("AnimationNodeStateMachineTransition_jqrdw"), "andar", "enterrar", SubResource("AnimationNodeStateMachineTransition_10d01"), "enterrar", "dormir", SubResource("AnimationNodeStateMachineTransition_n7oo1"), "andar", "End", SubResource("AnimationNodeStateMachineTransition_l8ejs")]
+graph_offset = Vector2(29, 59)
+
+[sub_resource type="Animation" id="Animation_10d01"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_n7oo1"]
+resource_name = "andar"
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_otpuh"]
+resource_name = "dormir"
+length = 2.0000124
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.05, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_goqhm"]
+resource_name = "enterrar"
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.375, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 12, 10]
+}
+
+[sub_resource type="Animation" id="Animation_856u7"]
+resource_name = "levantar"
+length = 0.875
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ts5d7"]
+resource_name = "Levar_dano"
+length = 0.625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [24, 25, 26]
+}
+
+[sub_resource type="Animation" id="Animation_lfn0f"]
+resource_name = "levar_dano"
+length = 1.375
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_goqhm"]
+_data = {
+&"RESET": SubResource("Animation_10d01"),
+&"andar": SubResource("Animation_n7oo1"),
+&"dormir": SubResource("Animation_otpuh"),
+&"enterrar": SubResource("Animation_goqhm"),
+&"levantar": SubResource("Animation_856u7"),
+&"levar_dano": SubResource("Animation_ts5d7"),
+&"morrer": SubResource("Animation_lfn0f")
+}
+
 [node name="Node2D" type="CharacterBody2D" unique_id=833525537]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_gcc27")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1176920456]
-sprite_frames = ExtResource("1_l8ejs")
-animation = &"idle"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1716548450]
 shape = SubResource("CapsuleShape2D_l8ejs")
 
-[node name="Vida_Comp" type="Node" parent="." unique_id=542514996]
+[node name="Vida_Comp" type="Node" parent="." unique_id=542514996 node_paths=PackedStringArray("dono")]
 script = ExtResource("1_nmqgl")
+dono = NodePath("..")
 vida = 3.0
 vida_Maxima = 3.0
-metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
 
 [node name="comp_hitbox" type="Area2D" parent="." unique_id=1985880423]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("3_gcc27")
-metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hitbox" unique_id=1553684161]
 shape = SubResource("RectangleShape2D_gcc27")
@@ -48,7 +249,6 @@ debug_color = Color(0.99, 0, 0, 0.13725491)
 collision_layer = 4
 collision_mask = 16
 script = ExtResource("4_hptil")
-metadata/_custom_type_script = "uid://d1xaxosi0e3l3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hurtbox" unique_id=19718066]
 position = Vector2(0, -3)
@@ -64,3 +264,17 @@ hit_from_inside = true
 position = Vector2(-10, 7)
 target_position = Vector2(0, 10)
 hit_from_inside = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=423069255]
+texture = ExtResource("5_l8ejs")
+hframes = 8
+vframes = 4
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=377350324]
+tree_root = SubResource("AnimationNodeStateMachine_jqrdw")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/acordado = true
+parameters/conditions/dormindo = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=918351695]
+libraries/ = SubResource("AnimationLibrary_goqhm")
