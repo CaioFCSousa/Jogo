@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://s1jae7bp41go" path="res://world/tileset/blocos_padroes.tres" id="1_xdpdf"]
 [ext_resource type="PackedScene" uid="uid://du27fc4g0oifh" path="res://entities/player/Player.tscn" id="2_yrmf2"]
-[ext_resource type="PackedScene" uid="uid://i114qe3q10kg" path="res://components/camera/camera_2_alvos.tscn" id="3_1hixe"]
+[ext_resource type="PackedScene" uid="uid://i114qe3q10kg" path="res://components/camera/camera.tscn" id="3_1hixe"]
 [ext_resource type="PackedScene" uid="uid://sdpdjhcrgl2" path="res://entities/inimigos/congumelo.tscn" id="4_lf6mt"]
 [ext_resource type="PackedScene" uid="uid://cyvqkam4ojpuh" path="res://ui/selection_screen/SelectionManager.tscn" id="5_yrmf2"]
 

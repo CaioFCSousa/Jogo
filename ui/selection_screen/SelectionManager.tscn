@@ -15,8 +15,8 @@ layer = 10
 script = ExtResource("1_grph0")
 lista_habilidades = Array[ExtResource("2_2rx4j")]([ExtResource("3_8jko0"), ExtResource("4_1r7wc"), ExtResource("3_1r7wc"), ExtResource("5_3idql"), ExtResource("5_2rx4j")])
 card_scene = ExtResource("8_1r7wc")
-container_p1 = NodePath("HBoxP1")
-container_p2 = NodePath("HBoxP2")
+container_p1 = NodePath("HBoxP2")
+container_p2 = NodePath("HBoxP1")
 moldura_p1 = NodePath("PainelP1/MolduraP1")
 moldura_p2 = NodePath("PainelP2/MolduraP2")
 

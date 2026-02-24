@@ -60,6 +60,7 @@ func gerar_cartas_para_player(p_id: int, container: Control):
 		carta.selecionada.connect(_ao_escolher_carta.bind(p_id))
 
 func _ao_escolher_carta(habilidade: AbilityResource, p_id: int):
+	print("Jogador ", p_id, " escolheu a carta: ", habilidade.nome)
 	# Esconde a moldura quando o jogador escolhe
 	var moldura_alvo = moldura_p1 if p_id == 1 else moldura_p2
 	var tw = create_tween()
@@ -71,10 +72,11 @@ func _ao_escolher_carta(habilidade: AbilityResource, p_id: int):
 	for p in get_tree().get_nodes_in_group("players"):
 		if p.get("player_id") == p_tag:
 			p.habilidade_atual = habilidade
+			print("DEBUG: Habilidade ", habilidade.nome, " entregue ao ", p_tag) # <-- ADICIONE ISSO
 			break
 
 	var tela = get_viewport().get_visible_rect().size
-	var alvo = Vector2(tela.x * 0.75, tela.y * 0.4) if p_id == 1 else Vector2(tela.x * 0.25, tela.y * 0.4)
+	var alvo = Vector2(tela.x *  0.25, tela.y * 0.4) if p_id == 1 else Vector2(tela.x * 0.75, tela.y * 0.4)
 	
 	for carta in container_alvo.get_children():
 		if carta is CardUI:

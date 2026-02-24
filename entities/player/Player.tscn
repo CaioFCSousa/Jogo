@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://du27fc4g0oifh"]
 
 [ext_resource type="Texture2D" uid="uid://dkdtoq0px22ld" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_4.png" id="1_44cfe"]
-[ext_resource type="Script" uid="uid://beehvxf82c3uh" path="res://entities/player/movimentacao_Player.gd" id="1_dd465"]
+[ext_resource type="Script" uid="uid://beehvxf82c3uh" path="res://entities/player/Player.gd" id="1_dd465"]
 [ext_resource type="Texture2D" uid="uid://b6bib5c4n54ik" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Fall/herochar_jump_down_anim_strip_3.png" id="2_2dyae"]
 [ext_resource type="Texture2D" uid="uid://8w64us45culj" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_death_anim_strip_8.png" id="2_d168t"]
 [ext_resource type="Texture2D" uid="uid://c8iphyjj6rqao" path="res://assets/platformer_metroidvania asset pack v1.01/herochar sprites(new)/Idle/herochar_idle_anim_strip_5.png" id="2_dd465"]
@@ -256,7 +256,7 @@ height = 21.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wbbrj"]
 radius = 5.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1949273261]
+[node name="Player" type="CharacterBody2D" unique_id=1949273261 groups=["players"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_dd465")
@@ -289,7 +289,6 @@ offset = Vector2(0, 6)
 collision_mask = 3
 script = ExtResource("24_btcch")
 vida = NodePath("../vida_Comp")
-metadata/_custom_type_script = "uid://d1xaxosi0e3l3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hurtbox" unique_id=1544569058]
 visible = false
@@ -308,7 +307,6 @@ metadata/_edit_use_anchors_ = true
 collision_layer = 2
 monitoring = false
 script = ExtResource("25_unwxu")
-metadata/_custom_type_script = "uid://dx1tw4mmnv15a"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="comp_hitbox" unique_id=686249236]
 position = Vector2(10, 3)
@@ -321,7 +319,6 @@ dono = NodePath("..")
 vida = 3.0
 vida_Maxima = 3.0
 regeneracao = true
-metadata/_custom_type_script = "uid://4dgxmyd2pfdu"
 
 [node name="invecibilidade_tempo" type="Timer" parent="vida_Comp" unique_id=818393532]
 one_shot = true

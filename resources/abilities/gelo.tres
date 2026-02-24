@@ -26,3 +26,4 @@ metadata/_custom_type_script = "uid://cnxoil3kk8k5s"
 script = ExtResource("1_dpsjx")
 nome = "Gelo"
 camadas_custom = Array[ExtResource("1_1q1t7")]([SubResource("Resource_sqoi0"), SubResource("Resource_krou7"), null])
+congela_inimigo = true
