@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bx5v5u1cxxl31"]
 
+[ext_resource type="Script" uid="uid://c2riiadf4l5w" path="res://ui/vida_ui/Barra_de_vida.gd" id="2_y4yjw"]
 [ext_resource type="Texture2D" uid="uid://des7042xmc3cs" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/lifes_icon.png" id="3_ok7cu"]
 [ext_resource type="Texture2D" uid="uid://vpr1r1qkswaq" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/health_hud_left.png" id="4_irxef"]
 [ext_resource type="Texture2D" uid="uid://ct2jd7tj2y7wo" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/health_hud_middle.png" id="5_e2l4f"]
-[ext_resource type="Script" uid="uid://c2riiadf4l5w" path="res://Barra_de_vida.gd" id="5_n5ude"]
 [ext_resource type="Texture2D" uid="uid://ba4b2ud55u4gh" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/health_hud_right.png" id="6_n5rqp"]
 [ext_resource type="Texture2D" uid="uid://dc1tq4wa0wfxt" path="res://assets/atlas/atlas_coracao.tres" id="6_waa4j"]
 [ext_resource type="Texture2D" uid="uid://colssvgpgyik4" path="res://assets/atlas/coracoes_atlas.png" id="6_y4yjw"]
@@ -81,7 +81,7 @@ offset_right = 93.666664
 offset_bottom = 20.0
 scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 2
-script = ExtResource("5_n5ude")
+script = ExtResource("2_y4yjw")
 vida_atual = 5
 textura_vidaCheia = SubResource("AtlasTexture_waa4j")
 textura_vidaVazia = ExtResource("6_waa4j")

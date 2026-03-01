@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Teste jogo legal"
-run/main_scene="uid://bx5v5u1cxxl31"
+run/main_scene="uid://sadih2j8jbsk"
 config/features=PackedStringArray("4.6", "Mobile")
 <<<<<<<HEADrun/main_scene="res://Cena_Teste.tscn"
+
+[global_group]
+
+player=""
 
 [input]
 

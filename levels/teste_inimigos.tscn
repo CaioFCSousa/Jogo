@@ -2,9 +2,8 @@
 
 [ext_resource type="TileSet" uid="uid://s1jae7bp41go" path="res://world/tileset/blocos_padroes.tres" id="1_xdpdf"]
 [ext_resource type="PackedScene" uid="uid://du27fc4g0oifh" path="res://entities/player/Player.tscn" id="2_yrmf2"]
-[ext_resource type="PackedScene" uid="uid://i114qe3q10kg" path="res://components/camera/camera_2_alvos.tscn" id="3_1hixe"]
+[ext_resource type="PackedScene" uid="uid://i114qe3q10kg" path="res://components/camera/camera_multAlvos.tscn" id="3_1hixe"]
 [ext_resource type="PackedScene" uid="uid://sdpdjhcrgl2" path="res://entities/inimigos/congumelo.tscn" id="4_lf6mt"]
-[ext_resource type="PackedScene" uid="uid://cyvqkam4ojpuh" path="res://ui/selection_screen/SelectionManager.tscn" id="5_yrmf2"]
 
 [node name="TesteInimigos" type="Node2D" unique_id=929413972]
 
@@ -25,7 +24,7 @@ tile_map_data = PackedByteArray("AADq/wsAAAAAAAEAAADq/wwAAAAAAAEAAADq/woAAAABAAE
 tile_set = ExtResource("1_xdpdf")
 collision_enabled = false
 
-[node name="Player" parent="." unique_id=1949273261 node_paths=PackedStringArray("flipar_elementos") instance=ExtResource("2_yrmf2")]
+[node name="Player" parent="." unique_id=1949273261 node_paths=PackedStringArray("flipar_elementos") groups=["player"] instance=ExtResource("2_yrmf2")]
 position = Vector2(-37, 9)
 flipar_elementos = [NodePath("comp_hitbox")]
 
@@ -35,7 +34,7 @@ imortal = true
 [node name="morteRespawn_SubComp" parent="Player/vida_Comp" index="1" unique_id=725625582 node_paths=PackedStringArray("local_respawn")]
 local_respawn = NodePath("../../../respawn")
 
-[node name="Player2" parent="." unique_id=1592618702 node_paths=PackedStringArray("flipar_elementos") instance=ExtResource("2_yrmf2")]
+[node name="Player2" parent="." unique_id=1592618702 node_paths=PackedStringArray("flipar_elementos") groups=["player"] instance=ExtResource("2_yrmf2")]
 position = Vector2(-86, 8)
 player_id = "P2"
 cor_do_personagem = Color(0.7336492, 0.38773715, 0.4979126, 1)
@@ -44,18 +43,14 @@ flipar_elementos = [NodePath("comp_hitbox")]
 [node name="morteRespawn_SubComp" parent="Player2/vida_Comp" parent_id_path=PackedInt32Array(1592618702, 1755289048) index="1" unique_id=725625582 node_paths=PackedStringArray("local_respawn")]
 local_respawn = NodePath("../../../respawn2")
 
-[node name="ponto camera" parent="." unique_id=920254326 node_paths=PackedStringArray("alvo1", "alvo2") instance=ExtResource("3_1hixe")]
-position = Vector2(231, 138)
-alvo1 = NodePath("../Player")
-alvo2 = NodePath("../Player2")
-exibir_alvo = false
-zoomLonge = 0.0
-aumentoDoZoom = 950
-
 [node name="cnagamelo" parent="." unique_id=833525537 instance=ExtResource("4_lf6mt")]
 position = Vector2(-238, 217)
 
-[node name="SelectionManager" parent="." unique_id=162087694 instance=ExtResource("5_yrmf2")]
+[node name="ponto camera" parent="." unique_id=920254326 instance=ExtResource("3_1hixe")]
+suavidade = 0.635
+zoomLonge = 0.38
+zoomProximo = 3.31
+aumentoDoZoom = 500
 
 [editable path="Player"]
 [editable path="Player2"]
