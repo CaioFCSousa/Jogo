@@ -47,10 +47,7 @@ local_respawn = NodePath("../../../respawn2")
 position = Vector2(-238, 217)
 
 [node name="ponto camera" parent="." unique_id=920254326 instance=ExtResource("3_1hixe")]
-suavidade = 0.635
-zoomLonge = 0.38
-zoomProximo = 3.31
-aumentoDoZoom = 500
+suavidade = 1.0
 
 [editable path="Player"]
 [editable path="Player2"]

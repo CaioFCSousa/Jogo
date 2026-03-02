@@ -4,30 +4,19 @@
 [ext_resource type="SpriteFrames" uid="uid://c00h56v44hgep" path="res://entities/inimigos/congumelo.tres" id="2_imhg3"]
 [ext_resource type="Script" uid="uid://c203psriqj1q8" path="res://components/camera/janela_debug.gd" id="3_yigy3"]
 
-[sub_resource type="Curve" id="Curve_yigy3"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.32517484, 0), 1.8232588, 1.8232588, 0, 0, Vector2(0.85314685, 1), -0.8629001, -0.8629001, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[node name="ponto camera" type="Node2D" unique_id=920254326]
+[node name="ponto camera" type="Camera2D" unique_id=1592003685]
 script = ExtResource("1_imhg3")
-teste = SubResource("Curve_yigy3")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1434624935]
-modulate = Color(2.887845e-06, 0.7430347, 0.91133726, 1)
+aumentoDoZoom = 400
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1583340038]
-visible = false
 sprite_frames = ExtResource("2_imhg3")
 animation = &"death"
-frame = 2
-frame_progress = 0.56912524
 speed_scale = 0.5
 
 [node name="janela_debug" type="Window" parent="." unique_id=114225556]
 oversampling_override = 1.0
 position = Vector2i(0, 36)
 size = Vector2i(368, 200)
-visible = false
 script = ExtResource("3_yigy3")
 
 [node name="Control" type="Control" parent="janela_debug" unique_id=1847148856]

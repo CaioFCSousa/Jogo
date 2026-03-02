@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dui0ina00wvuf"]
+
+[ext_resource type="Texture2D" uid="uid://bakt1lwevo1t5" path="res://assets/sprites/icon.svg" id="1_rcoh0"]
+[ext_resource type="Script" uid="uid://b75avu2u53gmp" path="res://levels/testando_interpo.gd" id="2_6hknt"]
+
+[sub_resource type="Curve" id="Curve_qfhqq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.077181205, 0), 5.894953, 5.894953, 0, 0, Vector2(0.13422818, 0.6186902), 0.0, 0.0, 0, 0, Vector2(0.2919463, 0.92019093), -4.825552, -4.825552, 0, 0, Vector2(0.8389262, 1), 2.744203, 2.744203, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[node name="TestandoLerp" type="Node2D" unique_id=562473018]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1522455834]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1101300647]
+position = Vector2(-454.00003, -193)
+scale = Vector2(0.46875, 0.40625)
+texture = ExtResource("1_rcoh0")
+
+[node name="Icon3" type="Sprite2D" parent="." unique_id=330481073]
+position = Vector2(449, -241)
+scale = Vector2(0.4453125, 1.0078125)
+texture = ExtResource("1_rcoh0")
+
+[node name="Icon4" type="Sprite2D" parent="." unique_id=605273807]
+modulate = Color(0.6114505, 1, 0.7598183, 1)
+position = Vector2(14, 15)
+texture = ExtResource("1_rcoh0")
+script = ExtResource("2_6hknt")
+curva = SubResource("Curve_qfhqq")
+
+[node name="Icon2" type="Sprite2D" parent="Icon4" unique_id=1279568612]
+position = Vector2(-213, 209)
+scale = Vector2(0.65625, 0.546875)
+texture = ExtResource("1_rcoh0")
